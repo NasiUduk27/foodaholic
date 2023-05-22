@@ -4,7 +4,7 @@
      <a href="../../index3.html" class="brand-link">
          <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
              class="brand-image img-circle elevation-3" style="opacity: .8">
-         <span class="brand-text font-weight-light">AdminLTE 3</span>
+         <span class="brand-text font-weight-light">Foodaholic</span>
      </a>
 
      <!-- Sidebar -->
@@ -16,7 +16,9 @@
                      alt="User Image">
              </div>
              <div class="info">
-                 <a href="#" class="d-block">Josafat Pratama Susilo</a>
+                 <a href="#" class="d-block">
+                     <?= auth()->user()->username; ?>
+                 </a>
              </div>
          </div>
 
@@ -35,75 +37,7 @@
 
          <!-- Sidebar Menu -->
          <nav class="mt-2">
-             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                 data-accordion="false">
-                 <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                 <li class="nav-item">
-                     <a href="{{ url('') }}" class="nav-link">
-                         <i class="nav-icon fas fa-home"></i>
-                         <p>
-                             Dashboard
-                         </p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="{{ url('/profile') }}" class="nav-link">
-                         <i class="nav-icon fas fa-user"></i>
-                         <p>
-                             Profile
-                         </p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="{{ url('/pengalaman-kuliah') }}" class="nav-link">
-                         <i class="nav-icon fas fa-graduation-cap"></i>
-                         <p>
-                             Pengalaman Kuliah
-                         </p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="{{ url('/articles') }}" class="nav-link">
-                         <i class="nav-icon fas fa-newspaper"></i>
-                         <p>
-                             Daftar Artikel
-                         </p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="{{ url('/hobi') }}" class="nav-link">
-                         <i class="nav-icon fas fa-play"></i>
-                         <p>
-                             Daftar Hobi
-                         </p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="{{ url('/keluarga') }}" class="nav-link">
-                         <i class="nav-icon fas fa-users"></i>
-                         <p>
-                             Daftar Keluarga
-                         </p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="{{ url('/mata-kuliah') }}" class="nav-link">
-                         <i class="nav-icon fas fa-graduation-cap"></i>
-                         <p>
-                             Daftar Mata Kuliah
-                         </p>
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a href="{{ url('/mahasiswa') }}" class="nav-link">
-                         <i class="nav-icon fas fa-users"></i>
-                         <p>
-                             Mahasiswa
-                         </p>
-                     </a>
-                 </li>
-             </ul>
+             @include('layouts.sidebar-'.$level)
          </nav>
          <!-- /.sidebar-menu -->
      </div>

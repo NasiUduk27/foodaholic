@@ -24,7 +24,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function(){
 });
 
 Route::middleware(['auth', 'user-access:2'])->group(function(){
-    Route::get('/mitra/home', [App\Http\Controllers\HomeController::class, 'mitraHome'])->name('mitra.home');
+    Route::get('/mitra/home', [App\Http\Controllers\MitraController::class, 'index'])->name('mitra.home');
 });
 
 Route::middleware(['auth', 'user-access:0'])->group(function(){
