@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mitra;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -80,5 +82,45 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function mitra(Request $request)
+    {
+        $search = $request->query('search');
+
+        $mitra = Mitra::where('nama_mitra', 'LIKE', "%{$search}%")
+            ->orderBy('id', 'DESC')
+            ->paginate(10)->withQueryString();
+
+        return view('admin.mitra', compact('mitra'));
+    }
+
+    public function detail_mitra($id)
+    {
+        $mitra = Mitra::find($id);
+        return view('admin.detail_mitra', ['mitra' => $mitra]);
+    }
+
+    public function verifikasi_mitra($id)
+    {
+        $mitra = Mitra::find($id);
+        $mitra->status_verifikasi = 1;
+        $mitra->save();
+        return redirect('/admin/mitra');
+    }
+
+    public function tolak_mitra($id)
+    {
+        $mitra = Mitra::find($id);
+        $mitra->status_verifikasi = 2;
+        $mitra->save();
+        return redirect('/admin/mitra');
+    }
+
+    public function show_produk()
+    {
+        $produk = Produk::all();
+        $paginate = Produk::paginate(5);
+        return view('admin.produk', ['produk' => $produk, 'paginate' => $paginate]);
     }
 }

@@ -28,5 +28,11 @@ Route::middleware(['auth', 'user-access:2'])->group(function(){
 });
 
 Route::middleware(['auth', 'user-access:0'])->group(function(){
-    Route::resource('/admin/home', AdminController::class);
+    Route::resource('/admin/', AdminController::class);
+    Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
+    Route::get('/admin/mitra', [AdminController::class, 'mitra'])->name('admin.mitra');
+    Route::get('/admin/mitra/verifikasi/{id}', [AdminController::class, 'verifikasi_mitra']);
+    Route::get('/admin/mitra/tolak/{id}', [AdminController::class, 'tolak_mitra']);
+    Route::get('/admin/mitra/detail/{id}', [AdminController::class, 'detail_mitra']);
+    Route::get('/admin/produk', [AdminController::class, 'show_produk']);
 });
