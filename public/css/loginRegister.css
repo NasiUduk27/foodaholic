@@ -1,0 +1,22 @@
+.container {
+    height: 100vh;
+    font-family: Poppins;
+}
+
+.container .login-section h4 {
+    padding-left: 24px;
+}
+
+.login-form-container {
+    border-left-style: solid;
+    border-color: #193880;
+    padding-left: 24px;
+}
+
+.login-form,
+.register-form {
+    padding: 16px;
+    box-shadow: 0px 4px 9px -3px rgba(97, 97, 97, 0.69);
+    -webkit-box-shadow: 0px 4px 9px -3px rgba(97, 97, 97, 0.69);
+    -moz-box-shadow: 0px 4px 9px -3px rgba(97, 97, 97, 0.69);
+}
