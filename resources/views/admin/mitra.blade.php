@@ -1,4 +1,7 @@
 @extends('layouts.template')
+@section('sidebar')
+@include('layouts.sidebar', array('level' => 'admin'))
+@endsection
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -68,7 +71,8 @@
                             <td>{{$m->detail_mitra}}</td>
                             <td>{{$m->status_verifikasi}}</td>
                             <td>
-                                <a href="{{ url('/nilai/'. $m->id.'/edit') }}" class="btn btn-sm btn-warning">edit</a>
+                                <a href="{{ url('/admin/mitra/verifikasi'. $m->id) }}" class="btn btn-sm btn-warning">Verifikasi</a>
+                                <a href="{{ url('/admin/mitra/detail/'.$m->id) }}" class="btn btn-sm btn-primary">Detail</a>
                                 <form method="POST" action="{{ url('/nilai/'.$m->id) }}">
                                     @csrf
                                     @method('DELETE')

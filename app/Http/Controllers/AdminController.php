@@ -104,6 +104,12 @@ class AdminController extends Controller
     public function verifikasi_mitra($id)
     {
         $mitra = Mitra::find($id);
+        return view('admin.verifikasi_mitra', ['mitra' => $mitra]);
+    }
+
+    public function terima_mitra($id)
+    {
+        $mitra = Mitra::find($id);
         $mitra->status_verifikasi = 1;
         $mitra->save();
         return redirect('/admin/mitra');

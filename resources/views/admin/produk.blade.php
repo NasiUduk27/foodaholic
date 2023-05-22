@@ -1,4 +1,7 @@
 @extends('layouts.template')
+@section('sidebar')
+@include('layouts.sidebar', array('level' => 'admin'))
+@endsection
 @section('content')
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
