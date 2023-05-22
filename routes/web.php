@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,5 +28,11 @@ Route::middleware(['auth', 'user-access:2'])->group(function(){
 });
 
 Route::middleware(['auth', 'user-access:0'])->group(function(){
-    Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
+    Route::resource('/admin/', AdminController::class);
+    Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
+    Route::get('/admin/mitra', [AdminController::class, 'mitra'])->name('admin.mitra');
+    Route::get('/admin/mitra/verifikasi/{id}', [AdminController::class, 'verifikasi_mitra']);
+    Route::get('/admin/mitra/tolak/{id}', [AdminController::class, 'tolak_mitra']);
+    Route::get('/admin/mitra/detail/{id}', [AdminController::class, 'detail_mitra']);
+    Route::get('/admin/produk', [AdminController::class, 'show_produk']);
 });
