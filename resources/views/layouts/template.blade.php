@@ -24,7 +24,7 @@
         @include('layouts.navbar')
         <!-- /.navbar -->
 
-        @include('layouts.sidebar')
+        @yield('sidebar')
 
         <!-- Content Wrapper. Contains page content -->
         @yield('content')
