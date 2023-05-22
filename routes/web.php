@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,5 +28,5 @@ Route::middleware(['auth', 'user-access:2'])->group(function(){
 });
 
 Route::middleware(['auth', 'user-access:0'])->group(function(){
-    Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
+    Route::resource('/admin/home', AdminController::class);
 });
