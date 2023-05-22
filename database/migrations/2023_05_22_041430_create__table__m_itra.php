@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('Mitra', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_mitra');
+            $table->string('lokasi_bisnis');
+            $table->string('detail_mitra');
+            $table->string('status_verifikasi', 1)->default('0');
             $table->timestamps();
         });
     }

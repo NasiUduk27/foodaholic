@@ -35,5 +35,15 @@ class UserSeeder extends Seeder
             'alamat' => 'Jl. Raya Bandung',
             'no_hp' => '081239567101',
         ]);
+
+        DB::table('users')->insert([
+            'level' => '0',
+            'email' => 'admin@gmail.com',
+            'username' => 'admin',
+            'name' => 'jade Smith',
+            'password' => Hash::make('12345678'),
+            'alamat' => 'Jl. Raya malang',
+            'no_hp' => '081239567101',
+        ]);
     }
 }
