@@ -18,32 +18,32 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             'level' => '1',
-            'email' => 'user@gmail.com',
-            'username' => 'user',
-            'name' => 'John Doe',
+            'email' => 'fito@gmail.com',
+            'username' => 'fito',
+            'name' => 'Dhorifitto Diansyah Putra',
             'password' => Hash::make('12345678'),
-            'alamat' => 'Jl. Raya Cikarang',
-            'no_hp' => '081234567890',
+            'alamat' => 'Perumahan De Daun C2 No. 17',
+            'no_hp' => '081331189623',
         ]);
 
         DB::table('users')->insert([
             'level' => '2',
-            'email' => 'mitra@gmail.com',
-            'username' => 'mitra',
-            'name' => 'Alfred Smith',
+            'email' => 'josafat@gmail.com',
+            'username' => 'josafat',
+            'name' => 'Josafat Pratama Susilo',
             'password' => Hash::make('12345678'),
-            'alamat' => 'Jl. Raya Bandung',
-            'no_hp' => '081239567101',
+            'alamat' => 'Kemantren 1 No. 59 RT 10 RW 03',
+            'no_hp' => '0895368679264',
         ]);
 
         DB::table('users')->insert([
             'level' => '0',
-            'email' => 'admin@gmail.com',
-            'username' => 'admin',
-            'name' => 'jade Smith',
+            'email' => 'fino@gmail.com',
+            'username' => 'fino',
+            'name' => 'Alfino Febry Krissaputra',
             'password' => Hash::make('12345678'),
-            'alamat' => 'Jl. Raya malang',
-            'no_hp' => '081239567101',
+            'alamat' => 'Jl. Kembang Turi no. 9',
+            'no_hp' => '082229138202',
         ]);
     }
 }
