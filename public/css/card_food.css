@@ -1,0 +1,39 @@
+:root {
+    --btn-primary: #7F9EE6; 
+  }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+}
+
+.fa-heart{
+    margin-right: 17px;
+}
+
+h1{
+    font-size: 48px;
+    font-weight: extra-bold;
+    margin-top: 152px;
+}
+
+h5{
+    margin-top: 68px;
+    font-weight: semi-bold;
+}
+
+.btn-secondary{
+    background-color: #FFFFFF;
+    border-color: var(--btn-primary);
+    border-radius: 20px;
+    margin-top: 23px;
+    color: var(--btn-primary);
+}
+
+    .btn-secondary:hover{
+        background-color: var(--btn-primary);
+        color: #FFFFFF;
+    }
+
