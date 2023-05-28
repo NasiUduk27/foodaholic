@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mitra extends Model
 {
     use HasFactory;
-    protected $table = 'Mitra';
+    protected $table = 'mitra';
 
     protected $fillable = [
         'nama_mitra',
@@ -16,4 +16,8 @@ class Mitra extends Model
         'detail_mitra',
         'status_verifikasi',
     ];
+
+    public function produk(){
+        return $this->hasMany(Produk::class);
+    }
 }

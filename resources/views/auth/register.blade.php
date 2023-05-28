@@ -24,16 +24,12 @@
             </div>
             <div class="login-section">
                 <h4>Register</h4>
-                <div class="login-form-container">
+                <div class="register-form-container">
                     <form action="{{ url('/register') }}" method="post" class="register-form">
                         @csrf
-                        <div class="input-group mb-3">
-                            <input type="username" name="username" class="form-control" placeholder="Username">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-user"></span>
-                                </div>
-                            </div>
+                        <div class="mb-4 d-flex flex-column">
+                            <label for="username">Username</label>
+                            <input name="username" type="username" class="form-control">
                         </div>
                         <div class="input-group mb-3">
                             <input type="name" name="name" class="form-control" placeholder="Name">

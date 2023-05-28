@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+
 Auth::routes();
 Route::get('/logout', [LoginController::class, 'logout']);
 
@@ -25,6 +27,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function(){
 
 Route::middleware(['auth', 'user-access:2'])->group(function(){
     Route::get('/mitra/home', [App\Http\Controllers\MitraController::class, 'index'])->name('mitra.home');
+    Route::get('/mitra/produk', [App\Http\Controllers\ProdukController::class, 'index']);
 });
 
 Route::middleware(['auth', 'user-access:0'])->group(function(){
