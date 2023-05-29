@@ -1,4 +1,9 @@
+@php
+    use Illuminate\Support\Facades\Auth;
+@endphp
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
 
 
 <div class="container">
@@ -13,7 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="/home">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button"
@@ -34,8 +39,18 @@
                 </li>
             </ul>
 
+
+
             <div class="ml-auto">
                 <ul class="navbar-nav">
+                    @if (Auth::check())
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" href="/logout">
+                                Logout
+                            </a>
+                        </li>
+                    @endif
+
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <img src="{{ asset('images/cart.png') }}" alt="Cart">
@@ -47,10 +62,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('profile') }}">
                             <img src="{{ asset('images/user.png') }}" alt="User" class="rounded-circle" width="30">
                         </a>
-                    </li>
+                    </li>                    
                 </ul>
             </div>
         </div>

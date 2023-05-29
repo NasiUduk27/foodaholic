@@ -24,6 +24,13 @@ h5{
     font-weight: semi-bold;
 }
 
+p{
+    font-size: 16px;
+    font-weight: semi-bold;
+    margin-bottom: 59px;
+    font-family: Poppins;
+}
+
 .btn-secondary{
     background-color: #FFFFFF;
     border-color: var(--btn-primary);

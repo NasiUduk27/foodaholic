@@ -20,7 +20,7 @@
     <div class="container">
         <div class="d-flex flex-row justify-content-center align-items-center h-100">
             <div class="imageHero">
-                <img src="{{ asset('image/login-bro.png') }}" alt="">
+                <img src="{{ asset('images/register-bro.png') }}" alt="">
             </div>
             <div class="login-section">
                 <h4>Register</h4>

@@ -21,11 +21,6 @@
                                 <button class="btn btn-primary" type="button">Delivery</button>
                             </div>
                             <div class="col-md-4">
-                                <div class="Or-text text-center">
-                                    <span>Or</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
                                 <button class="btn btn-secondary-hero" type="button">Pick Up</button>
                             </div>
                         </div>
