@@ -20,4 +20,8 @@ class Mitra extends Model
     public function produk(){
         return $this->hasMany(Produk::class);
     }
+
+    public function transaksi(){
+        return $this->hasMany(Transaksi::class);
+    }
 }

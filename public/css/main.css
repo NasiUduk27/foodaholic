@@ -12,6 +12,7 @@
 }
 
 .hero-bg{
+    margin-top: 30px;
     background-color: var(--background-hero);
     padding: 50px;
 }
@@ -52,20 +53,13 @@
     background-color: #FFFFFF;
     border: 1px solid var(--background-hero);
     margin-top: 23px;
+    margin-left: 120px;
 }
 
 .btn-secondary-hero:hover{
     background-color: #6B8CD9;
     border: 1px solid #6B8CD9;
     color: #FFFFFF;
-}
-
-.Or-text {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 30px;
-    color: var(--blue-primary);
-    margin-top: 23px;
 }
 
 .search-hero{
@@ -79,4 +73,16 @@
 h1{
     font-size: 48px;
     font-weight: extra-bold;
+}
+.custom-btn {
+  width: 100px;
+  margin-left: 50px;
+  margin-bottom: 25px;
+}
+
+.btn-container {
+    display: inline-block;
+}
+.btn-container a {
+    display: inline-block;
 }

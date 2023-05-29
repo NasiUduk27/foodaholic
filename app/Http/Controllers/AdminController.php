@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mitra;
 use App\Models\Produk;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -101,18 +102,13 @@ class AdminController extends Controller
         return view('admin.detail_mitra', ['mitra' => $mitra]);
     }
 
-    public function verifikasi_mitra($id)
-    {
-        $mitra = Mitra::find($id);
-        return view('admin.verifikasi_mitra', ['mitra' => $mitra]);
-    }
 
     public function terima_mitra($id)
     {
         $mitra = Mitra::find($id);
         $mitra->status_verifikasi = 1;
         $mitra->save();
-        return redirect('/admin/mitra');
+        return redirect('/admin/mitra/detail/' . $id);
     }
 
     public function tolak_mitra($id)
@@ -120,13 +116,27 @@ class AdminController extends Controller
         $mitra = Mitra::find($id);
         $mitra->status_verifikasi = 2;
         $mitra->save();
-        return redirect('/admin/mitra');
+        return redirect('/admin/mitra/detail/' . $id);
     }
 
-    public function show_produk()
+    public function hapus_verifikasi($id)
     {
-        $produk = Produk::all();
+        $mitra = Mitra::find($id);
+        $mitra->status_verifikasi = 0;
+        $mitra->save();
+        return redirect('/admin/mitra/detail/' . $id);
+    }
+
+    public function show_produk($id)
+    {
+        $produk = Produk::where('id_mitra', $id)->get();
         $paginate = Produk::paginate(5);
         return view('admin.produk', ['produk' => $produk, 'paginate' => $paginate]);
+    }
+
+    public function transaksi()
+    {
+        $transaksi = Transaksi::with('user', 'produk', 'mitra')->paginate(5);
+        return view('admin.transaksi', ['transaksi' => $transaksi]);
     }
 }

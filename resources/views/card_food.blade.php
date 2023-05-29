@@ -4,7 +4,9 @@
 
 <div class="container">
     <h1 class = "text-center">Best Seller</h1>
-    <p class = "text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eligendi, suscipit consequatur magni nesciunt unde exercitationem reprehenderit accusantium deleniti illum officiis, eaque voluptatum placeat est perspiciatis, similique alias expedita. Molestiae.</p>
+    <p class = "text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, unde et voluptatem consequatur, minus, minima esse debitis quisquam neque incidunt facilis laboriosam nesciunt explicabo asperiores? Enim eum aspernatur iure dolorem.
+    Aliquid veniam, voluptate soluta expedita rem nisi vero. In vitae facilis cupiditate, maiores hic voluptatem assumenda quibusdam id exercitationem dolorum! Doloremque consectetur optio sed, vero exercitationem molestiae minus praesentium impedit?
+    Saepe nobis veniam dolorum ipsum excepturi nulla animi eius optio ad provident porro eaque obcaecati quos enim minus deleniti repudiandae reprehenderit dolor officia, quisquam delectus molestiae! Corrupti enim omnis odio.</p>
     <div class="row">
         <div class="col-md-4">
             <div class="card">

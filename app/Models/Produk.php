@@ -23,4 +23,8 @@ class Produk extends Model
     public function mitra(){
         return $this->belongsTo(Mitra::class);
     }
+
+    public function transaksi(){
+        return $this->hasMany(Transaksi::class);
+    }
 }
