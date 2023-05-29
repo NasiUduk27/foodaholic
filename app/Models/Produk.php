@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Produk extends Model
 {
     use HasFactory;
-    protected $table = 'Produk';
+    protected $table = 'produk';
 
     protected $fillable = [
         'nama_produk',
@@ -19,4 +19,12 @@ class Produk extends Model
         'batas_ketahanan',
         'foto_produk',
     ];
+
+    public function mitra(){
+        return $this->belongsTo(Mitra::class);
+    }
+
+    public function transaksi(){
+        return $this->hasMany(Transaksi::class);
+    }
 }

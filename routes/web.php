@@ -26,6 +26,8 @@ Route::get('/about_us', function () {
     return view('about_us');
 })->name('about_us');
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+
 Auth::routes();
 
 Route::get('/logout', [LoginController::class, 'logout']);
@@ -37,14 +39,17 @@ Route::middleware(['auth', 'user-access:1'])->group(function(){
 
 Route::middleware(['auth', 'user-access:2'])->group(function(){
     Route::get('/mitra/home', [App\Http\Controllers\MitraController::class, 'index'])->name('mitra.home');
+    Route::get('/mitra/produk', [App\Http\Controllers\ProdukController::class, 'index']);
 });
 
 Route::middleware(['auth', 'user-access:0'])->group(function(){
     Route::resource('/admin/', AdminController::class);
     Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
     Route::get('/admin/mitra', [AdminController::class, 'mitra'])->name('admin.mitra');
-    Route::get('/admin/mitra/verifikasi/{id}', [AdminController::class, 'verifikasi_mitra']);
+    Route::get('/admin/mitra/verifikasi/{id}', [AdminController::class, 'terima_mitra']);
     Route::get('/admin/mitra/tolak/{id}', [AdminController::class, 'tolak_mitra']);
     Route::get('/admin/mitra/detail/{id}', [AdminController::class, 'detail_mitra']);
-    Route::get('/admin/produk', [AdminController::class, 'show_produk']);
+    Route::get('/admin/mitra/produk/{id}', [AdminController::class, 'show_produk']);
+    Route::get('/admin/mitra/hapus-verifikasi/{id}', [AdminController::class, 'hapus_verifikasi']);
+    Route::get('/admin/transaksi', [AdminController::class, 'transaksi'])->name('admin.transaksi');
 });

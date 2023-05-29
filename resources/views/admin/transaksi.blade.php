@@ -9,11 +9,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Produk</h1>
+            <h1>Data Transaksi</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item active">Data Produk</li>
+              <li class="breadcrumb-item active">Data Transaksi</li>
             </ol>
           </div>
         </div>
@@ -26,7 +26,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Tabel Produk</h3>
+          <h3 class="card-title">Tabel Transaksi</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -42,24 +42,26 @@
           <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Nama Produk</th>
-                            <th>Harga</th>
-                            <th>Rating</th>
-                            <th>Stok</th>
-                            <th>Detail</th>
-                            <th>Batas Ketahanan</th>
+                            <th>Nama User</th>
+                            <th>Produk</th>
+                            <th>Mitra</th>
+                            <th>Status</th>
+                            <th>Nominal</th>
+                            <th>Transaksi Dibuat</th>
+                            <th>Transaksi Selesai</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if($produk->count() > 0)
-                        @foreach($paginate as $m)
+                        @if($transaksi->count() > 0)
+                        @foreach($transaksi as $m)
                         <tr>
-                            <td>{{$m->nama_produk}}</td>
-                            <td>{{$m->harga}}</td>
-                            <td>{{$m->rating}}</td>
-                            <td>{{$m->stok}}</td>
-                            <td>{{$m->detail_produk}}</td>
-                            <td>{{$m->batas_ketahanan}}</td>
+                            <td>{{$m->user->username}}</td>
+                            <td>{{$m->produk->nama_produk}}</td>
+                            <td>{{$m->mitra->nama_mitra}}</td>
+                            <td>{{$m->status}}</td>
+                            <td>{{$m->nominal}}</td>
+                            <td>{{$m->created_at}}</td>
+                            <td>{{$m->updated_at}}</td>
                         </tr>
                         @endforeach
                         @else

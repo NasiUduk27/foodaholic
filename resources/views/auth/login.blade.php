@@ -27,25 +27,19 @@
                 <div class="login-form-container">
                     <form action="{{ url('/login') }}" method="post" class="login-form">
                         @csrf
-                        <div class="input-group mb-3">
-                            <input name="username" type="username" class="form-control" placeholder="Username">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-envelope"></span>
-                                </div>
-                            </div>
+                        <div class="mb-4 d-flex flex-column">
+                            <label for="username">Username</label>
+                            <input name="username" type="username" class="form-control">
                         </div>
-                        <div class="input-group mb-3">
-                            <input name="password" type="password" class="form-control" placeholder="Password">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-lock"></span>
-                                </div>
-                            </div>
+                        <div class="mb-4 d-flex flex-column">
+                            <label for="password">Password</label>
+                            <input name="password" type="password" class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                        Belum Punya Akun?
-                        <a href="/register">Daftar</a>
+                        <button type="submit" class="btn btn-primary btn-block mb-4">Sign In</button>
+                        <div class="d-flex justify-content-center">
+                            Belum Punya Akun?
+                            <a href="/register" class="ml-2">Daftar</a>
+                        </div>
                     </form>
                 </div>
             </div>

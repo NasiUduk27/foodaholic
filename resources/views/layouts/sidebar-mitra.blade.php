@@ -11,9 +11,17 @@
     </li>
     <li class="nav-item">
         <a href="{{ url('/profile') }}" class="nav-link">
-            <i class="nav-icon fas fa-utensils"></i>
+            <i class="nav-icon fas fa-shopping-cart"></i>
             <p>
                 Pesanan
+            </p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ url('/mitra/produk') }}" class="nav-link">
+            <i class="nav-icon fas fa-utensils"></i>
+            <p>
+                Produk
             </p>
         </a>
     </li>
