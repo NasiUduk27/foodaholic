@@ -57,7 +57,7 @@
                             <th>Nama Mitra</th>
                             <th>Lokasi</th>
                             <th>Detail</th>
-                            <th>Status Verifikasi</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -69,14 +69,22 @@
                             <td>{{$m->nama_mitra}}</td>
                             <td>{{$m->lokasi_bisnis}}</td>
                             <td>{{$m->detail_mitra}}</td>
-                            <td>{{$m->status_verifikasi}}</td>
                             <td>
-                                <a href="{{ url('/admin/mitra/verifikasi'. $m->id) }}" class="btn btn-sm btn-warning">Verifikasi</a>
+                                @if($m->status_verifikasi == 0)
+                                <span class="badge badge-warning">Belum Diverifikasi</span>
+                                @elseif($m->status_verifikasi == 1)
+                                <span class="badge badge-success">Diterima</span>
+                                @elseif($m->status_verifikasi == 2)
+                                <span class="badge badge-danger">Ditolak</span>
+                                @endif
+                            </td>
+                            <td>
+                                <a href="{{ url('/admin/mitra/produk/'. $m->id) }}" class="btn btn-sm btn-warning">Produk</a>
                                 <a href="{{ url('/admin/mitra/detail/'.$m->id) }}" class="btn btn-sm btn-primary">Detail</a>
                                 <form method="POST" action="{{ url('/nilai/'.$m->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Apakah anda yakin ingin menghapus data {{ $m->nama }}?')" class="btn btn-sm btn-danger">hapus</button>
+                                    <button type="submit" onclick="return confirm('Apakah anda yakin ingin menghapus data {{ $m->nama }}?')" class="btn btn-sm btn-danger">Hapus</button>
                                 </form>
                             </td>
                         </tr>

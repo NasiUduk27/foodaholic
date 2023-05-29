@@ -80,3 +80,15 @@ h1{
     font-size: 48px;
     font-weight: extra-bold;
 }
+.custom-btn {
+  width: 100px;
+  margin-left: 50px;
+  margin-bottom: 25px;
+}
+
+.btn-container {
+    display: inline-block;
+}
+.btn-container a {
+    display: inline-block;
+}

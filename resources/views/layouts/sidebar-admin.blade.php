@@ -17,10 +17,10 @@
             </p>
         </a>
     <li class="nav-item">
-        <a href="{{ url('/admin/produk') }}" class="nav-link">
+        <a href="{{ url('/admin/transaksi') }}" class="nav-link">
             <i class="nav-icon fas fa-user"></i>
             <p>
-                Produk
+                Transaksi
             </p>
         </a>
     </li>
