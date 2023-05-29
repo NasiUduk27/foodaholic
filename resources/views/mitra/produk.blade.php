@@ -40,37 +40,37 @@
             </div>
             <div class="card-body">
 
-                <a href="{{url('produk/create')}}" class="btn btn-sm btn-success my-2">Tambah Produk</a>
+                <a href="{{url('/mitra/produk/create')}}" class="btn btn-sm btn-success my-2">Tambah Produk</a>
 
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>No</th>
                             <th>Nama Makanan</th>
                             <th>Harga</th>
                             <th>Rating</th>
                             <th>Stok</th>
-                            <th>Batas Ketahanan</th>
+                            <th>Batas Ketahanan (Jam)</th>
                             <th>Foto</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @if($data->count() > 0)
-                        @foreach($data as $p)
+                        @foreach($data as $i => $p)
                         <tr>
-                            <td>{{$p->id}}</td>
+                            <td>{{$i++}}</td>
                             <td>{{$p->nama_produk}}</td>
                             <td>{{$p->harga}}</td>
                             <td>{{$p->rating}}</td>
                             <td>{{$p->stok}}</td>
                             <td>{{$p->batas_ketahanan}}</td>
-                            <td><img width="100px" height="100px" src="{{ isset($p)? asset('storage/'.$p->foto) : ''}}">
+                            <td><img width="100px" height="100px" src="{{ asset('storage/'.$p->foto_produk)}}">
                             </td>
                             <td class="d-flex">
-                                <a href="{{ url('/mitra/produk/'. $p->nim) }}" class="btn btn-sm btn-info mx-2">Show</a>
+                                <a href="{{ url('/mitra/produk/'. $p->id) }}" class="btn btn-sm btn-info mx-2">Show</a>
 
-                                <a href="{{ url('/mitra/produk/'. $p->nim.'/edit') }}"
+                                <a href="{{ url('/mitra/produk/'. $p->id.'/edit') }}"
                                     class="btn btn-sm btn-primary mx-2">Edit</a>
 
                                 <form method="POST" action="{{ url('/mitra/produk/'.$p->id) }}">
@@ -79,7 +79,7 @@
                                     <button type="submit" class="btn btn-sm btn-danger mx-2">Delete</button>
                                 </form>
 
-                                <a href="{{ url('/mitra/produk/detail-nilai/'. $p->nim) }}"
+                                <a href="{{ url('/mitra/produk/detail-nilai/'. $p->id) }}"
                                     class="btn btn-sm btn-warning mx-2">Nilai</a>
                             </td>
                         </tr>
