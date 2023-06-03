@@ -6,6 +6,7 @@ use App\Models\Mitra;
 use App\Models\Produk;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -136,7 +137,13 @@ class AdminController extends Controller
 
     public function transaksi()
     {
-        $transaksi = Transaksi::with('user', 'produk', 'mitra')->paginate(5);
+        // $transaksi = Transaksi::with('user')->paginate(5);
+        $transaksi = DB::table('transaksi')
+                    ->join('users', 'users.id', '=', 'transaksi.id_user')
+                    ->join('produk', 'produk.id', '=', 'transaksi.id_produk')
+                    ->join('mitra', 'mitra.id', '=', 'transaksi.id_mitra')
+                    ->select('users.username', 'produk.nama_produk', 'mitra.nama_mitra', 'transaksi.*')
+                    ->paginate(5);
         return view('admin.transaksi', ['transaksi' => $transaksi]);
     }
 }
