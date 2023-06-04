@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -80,5 +82,15 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request){
+
+        $cari = $request->cari;
+        $transaksi = DB::table('produk')
+                    ->where('nama_produk', 'like', '%'.$cari.'%')
+                    ->paginate(5);
+
+        return view('user.result', ['transaksi' => $transaksi]);
     }
 }

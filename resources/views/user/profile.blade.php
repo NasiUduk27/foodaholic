@@ -1,7 +1,7 @@
 @include('navbar')
 
 @php
-    use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 @endphp
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -13,113 +13,116 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4 preview">
-            <p>Nama :</p>
-            <p>Email :</p>
-            <p>Alamat :</p>
-            <p>No. Hp :</p>
+            <img src="{{ asset('images/' . $user->foto) }}" alt="">
+            <p>Nama : {{$user->name}}</p>
+            <p>Email : {{$user->email}}</p>
+            <p>Alamat : {{$user->alamat}}</p>
+            <p>No. Hp : {{$user->no_hp}}</p>
         </div>
-            <div class="card col-sm-8 shadow">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link {{ Request::is('profile') ? 'active' : '' }}" href="{{ route('profile') }}">Profil</a>
-                            </li>                           
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Pesanan Saya</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Keranjang Belanja</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+        <div class="card col-sm-8 shadow">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('profile') ? 'active' : '' }}"
+                                href="{{ route('profile') }}">Profil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pesanan Saya</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Keranjang Belanja</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-                <h4>Edit Profile</h4>
+            <h4>Edit Profile</h4>
 
-                <div class="row">
-                    <div class="col-md-4">Nama Depan
-                        <div class="input-group">
-                            <input type="text" class="form-control search-hero" placeholder="">
-                        </div>
-                    </div>
-                    <div class="col-md-4 offset-md-4">Email
-                        <div class="input-group">
-                            <input type="text" class="form-control search-hero" placeholder="">
-                        </div>
+            <div class="row">
+                <div class="col-md-4">Username
+                    <div class="input-group">
+                        <input type="text" value="{{ $user->username }}" class="form-control search-hero"
+                            placeholder="">
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-md-4">Nama Belakang
-                        <div class="input-group">
-                            <input type="text" class="form-control search-hero" placeholder="">
-                        </div>
-                    </div>
-                    <div class="col-md-4 offset-md-4">No.Hp
-                        <div class="input-group">
-                            <input type="text" class="form-control search-hero" placeholder="">
-                        </div>
+                <div class="col-md-4 offset-md-4">Email
+                    <div class="input-group">
+                        <input type="text" value="{{ $user->email }}" class="form-control search-hero" placeholder="">
                     </div>
                 </div>
-
-                <div class="container">
-                    <h4>Foto Profile</h4>
-                    <form action="{{ route('profile') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                            <input type="file" name="profile_image" id="profile_image">
-                        </div>
-
-                        <button type="submit">Pilih foto</button>
-                    </form>
-                </div>
-
-                <h4>Edit Profile</h4>
-
-                <div class="row">
-                    <div class="col-md-4">Provinsi
-                        <div class="input-group">
-                            <input type="text" class="form-control search-hero" placeholder="">
-                        </div>
-                    </div>
-                    <div class="col-md-4 offset-md-4">Kota
-                        <div class="input-group">
-                            <input type="text" class="form-control search-hero" placeholder="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4">Kecamatan
-                        <div class="input-group">
-                            <input type="text" class="form-control search-hero" placeholder="">
-                        </div>
-                    </div>
-                    <div class="col-md-4 offset-md-4">Kode Pos
-                        <div class="input-group">
-                            <input type="text" class="form-control search-hero" placeholder="">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">Alamat
-                        <div class="input-group">
-                            <input type="text" class="form-control search-hero" placeholder="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mt-4">
-                    <div class="col text-center">
-                        <a href="#" class="text-center">Save Profile</a>
-                    </div>
-                </div>
-
             </div>
-        </div>
 
+            <div class="row">
+                <div class="col-md-4">Nama Lengkap
+                    <div class="input-group">
+                        <input type="text" value="{{ $user->name }}" class="form-control search-hero" placeholder="">
+                    </div>
+                </div>
+                <div class="col-md-4 offset-md-4">No.Hp
+                    <div class="input-group">
+                        <input type="text" value="{{ $user->no_hp }}" class="form-control search-hero" placeholder="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <h4>Foto Profile</h4>
+                <form action="{{ route('profile') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <input type="file" name="profile_image" id="profile_image">
+                    </div>
+
+                    <button type="submit">Pilih foto</button>
+                </form>
+            </div>
+
+            <h4>Edit Profile</h4>
+
+            <div class="row">
+                <div class="col-md-4">Provinsi
+                    <div class="input-group">
+                        <input type="text" class="form-control search-hero" placeholder="">
+                    </div>
+                </div>
+                <div class="col-md-4 offset-md-4">Kota
+                    <div class="input-group">
+                        <input type="text" class="form-control search-hero" placeholder="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">Kecamatan
+                    <div class="input-group">
+                        <input type="text" class="form-control search-hero" placeholder="">
+                    </div>
+                </div>
+                <div class="col-md-4 offset-md-4">Kode Pos
+                    <div class="input-group">
+                        <input type="text" class="form-control search-hero" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">Alamat
+                    <div class="input-group">
+                        <input type="text" class="form-control search-hero" placeholder="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col text-center">
+                    <a href="#" class="text-center">Save Profile</a>
+                </div>
+            </div>
+
+        </div>
     </div>
+
+</div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

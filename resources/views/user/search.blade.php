@@ -3,12 +3,13 @@
 <script src="https://kit.fontawesome.com/d4cdca322c.js" crossorigin="anonymous"></script>
 
 <div class="container">
-    <form action="#" method="get">
+    <form action="{{ url('/search') }}" method="GET" class="d-flex" role="search">
         <div class="input-group">
-            <input type="text" class="form-control search-user" placeholder="Cari menu makanan..." aria-label="Search"
-              aria-describedby="searchButton">
-            <div class="input-group-append">
-              <span class="input-group-text"><i class="fas fa-search"></i></span>
-            </div>
-          </div>          
+            <input type="text" class="form-control search-user" name="produk" placeholder="Cari menu makanan..."
+                aria-label="Search" aria-describedby="searchButton">
+        </div>
+        <div class="input-group-append">
+            <button type="submit" class="input-group-text"><i class="fas fa-search"></i></button>
+        </div>
+    </form>
 </div>
