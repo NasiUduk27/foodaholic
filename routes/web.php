@@ -56,4 +56,8 @@ Route::middleware(['auth', 'user-access:0'])->group(function(){
     Route::get('/admin/mitra/produk/{id}', [AdminController::class, 'show_produk']);
     Route::get('/admin/mitra/hapus-verifikasi/{id}', [AdminController::class, 'hapus_verifikasi']);
     Route::get('/admin/transaksi', [AdminController::class, 'transaksi'])->name('admin.transaksi');
+    Route::get('admin/user', [AdminController::class, 'show_user'])->name('admin.user');
+    Route::get('admin/user/detail/{id}', [AdminController::class, 'detail_user']);
+    Route::get('admin/user/delete/{id}', [AdminController::class, 'delete_user']);
+    Route::get('admin/mitrra/delete/{id}', [AdminController::class, 'delete_mitra']);
 });

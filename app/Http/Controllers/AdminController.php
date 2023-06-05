@@ -21,8 +21,6 @@ class AdminController extends Controller
         $user = User::select(DB::raw('count(*) as user'))->whereYear('created_at',date('Y'))
         ->groupBy(DB::raw("Month(created_at)"))
         ->pluck('user');
-        var_dump($user);
-        die();
             return view('admin.home', compact('user'));
     }
 
@@ -151,5 +149,43 @@ class AdminController extends Controller
                     ->select('users.username', 'produk.nama_produk', 'mitra.nama_mitra', 'transaksi.*')
                     ->paginate(5);
         return view('admin.transaksi', ['transaksi' => $transaksi]);
+    }
+
+    public function show_user(Request $request)
+    {
+        $search = $request->query('search');
+
+        $user = User::where('name', 'LIKE', "%{$search}%")
+            ->where('level', '1')
+            ->orderBy('id', 'DESC')
+            ->paginate(10)->withQueryString();
+        return view('admin.user', ['user' => $user]);
+    }
+
+    public function detail_user($id)
+    {
+        $user = User::find($id);
+        $transaksi = DB::table('transaksi')
+                    ->join('users', 'users.id', '=', 'transaksi.id_user')
+                    ->join('produk', 'produk.id', '=', 'transaksi.id_produk')
+                    ->join('mitra', 'mitra.id', '=', 'transaksi.id_mitra')
+                    ->select('users.username', 'produk.nama_produk', 'mitra.nama_mitra', 'transaksi.*')
+                    ->where('transaksi.id_user', $id)
+                    ->paginate(5);
+        return view('admin.detail_user', ['user' => $user, 'transaksi' => $transaksi]);
+    }
+
+    public function delete_user($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/admin/user');
+    }
+
+    public function delete_mitra($id)
+    {
+        $mitra = Mitra::find($id);
+        $mitra->delete();
+        return redirect('/admin/mitra');
     }
 }
