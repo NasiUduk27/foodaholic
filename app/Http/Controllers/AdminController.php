@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mitra;
 use App\Models\Produk;
 use App\Models\Transaksi;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +18,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-            return view('admin.home');
+        $user = User::select(DB::raw('count(*) as user'))->whereYear('created_at',date('Y'))
+        ->groupBy(DB::raw("Month(created_at)"))
+        ->pluck('user');
+        var_dump($user);
+        die();
+            return view('admin.home', compact('user'));
     }
 
     /**
@@ -130,7 +136,7 @@ class AdminController extends Controller
 
     public function show_produk($id)
     {
-        $produk = Produk::where('id_mitra', $id)->get();
+        $produk = Produk::where('id_mitra', $id)->first();
         $paginate = Produk::paginate(5);
         return view('admin.produk', ['produk' => $produk, 'paginate' => $paginate]);
     }

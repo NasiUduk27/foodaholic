@@ -20,7 +20,7 @@ class TransaksiSeeder extends Seeder
             'id_mitra' => '2',
             'id_user' => '1',
             'status' => '1',
-            'status' => '3',
+            'qty' => '3',
             'nominal' => '96000',
         ]);
     }
