@@ -86,11 +86,11 @@ class UserController extends Controller
 
     public function search(Request $request){
 
-        $cari = $request->cari;
-        $transaksi = DB::table('produk')
+        $cari = $request->produk;
+        $produk = DB::table('produk')
                     ->where('nama_produk', 'like', '%'.$cari.'%')
-                    ->paginate(5);
+                    ->paginate(12);
 
-        return view('user.result', ['transaksi' => $transaksi]);
+        return view('user.result', ['produk' => $produk]);
     }
 }
