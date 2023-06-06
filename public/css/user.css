@@ -4,11 +4,17 @@
   box-sizing: border-box;
 }
 
+h3{
+  margin-top: 20px;
+  font-family: Poppins;
+  font-style: normal;
+  text-align: center;
+}
+
 .search-user {
   width: 206px;
   height: 50px;
   background: #FFFFFF;
-  /* border-radius: 20px; */
 }
 
 .input-group {
@@ -23,39 +29,47 @@
   background: none;
 }
 
-
-.food-card-wrapper {
-  border: 2px solid black;
-  margin: 10px;
-  display: flex;
-  overflow-x: auto;
+.card-deck{
+  margin: 40px 0;
 }
 
-.food-category {
-  margin-bottom: 20px;
-  margin-top: 30px;
+.card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  border-radius: 15px;
 }
 
-.food-category h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+.card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
-.food-card {
-  flex: 0 0 auto;
-  width: 172px;
-  height: 168px;
-  margin: 10px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
+.card:hover small {
+  font-size: 50px;
+  color: white !important;
+  text-align: center;
 }
 
-.food-card img {
-  width: 100%;
-  height: auto;
+
+.card-img-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 15px;
 }
 
-.food-card h3 {
-  font-size: 16px;
-  margin-bottom: 5px;
+.card:hover .card-img-overlay {
+  opacity: 10;
 }
+
+.card-link {
+  color: #fff;
+  text-decoration: none;
+}
+
