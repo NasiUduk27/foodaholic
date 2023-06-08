@@ -1,4 +1,3 @@
-@include('navbar')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +13,7 @@
 </head>
 
 <body>
-    @include('user.search')
+    @include('navbar')
 
     @yield('content')
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -22,14 +21,6 @@
 
     @include('footer')
     <script src="{{ asset('assets/plugins/jquery/jquery.min.js' )}}"></script>
-    <script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    </script>
-    @stack('custom_js')
 </body>
 
 </html>

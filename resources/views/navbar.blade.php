@@ -1,5 +1,5 @@
 @php
-    use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 @endphp
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -44,15 +44,15 @@
             <div class="ml-auto">
                 <ul class="navbar-nav">
                     @if (Auth::check())
-                        <li class="nav-item">
-                            <a class="nav-link text-danger" href="/logout">
-                                Logout
-                            </a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="/logout">
+                            Logout
+                        </a>
+                    </li>
                     @endif
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ url('keranjang') }}">
                             <img src="{{ asset('images/cart.png') }}" alt="Cart">
                         </a>
                     </li>
@@ -65,7 +65,7 @@
                         <a class="nav-link" href="{{ route('profile') }}">
                             <img src="{{ asset('images/user.png') }}" alt="User" class="rounded-circle" width="30">
                         </a>
-                    </li>                    
+                    </li>
                 </ul>
             </div>
         </div>

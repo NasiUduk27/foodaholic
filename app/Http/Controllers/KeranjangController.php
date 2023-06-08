@@ -15,7 +15,9 @@ class KeranjangController extends Controller
      */
     public function index()
     {
-        //
+        $keranjang = Keranjang::where('user_id', auth()->user()->id)->get();
+
+        return view('user.keranjang', compact('keranjang'));
     }
 
     /**

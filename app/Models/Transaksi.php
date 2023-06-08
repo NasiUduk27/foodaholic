@@ -13,9 +13,10 @@ class Transaksi extends Model
     protected $fillable = [
         'id_mitra',
         'id_user',
-        'id_produk',
         'status',
-        'nominal',
+        'total',
+        'bayar',
+        'bayar_type',
     ];
 
     public function mitra(){
@@ -27,6 +28,6 @@ class Transaksi extends Model
     }
 
     public function produk(){
-        return $this->belongsTo(Produk::class);
+        return $this->belongsToMany(Produk::class, 'transaksi_produk', 'transaksi_id', 'produk_id')->withPivot('qty');
     }
 }
