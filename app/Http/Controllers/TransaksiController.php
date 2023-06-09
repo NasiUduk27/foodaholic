@@ -91,6 +91,8 @@ class TransaksiController extends Controller
         //
     }
 
+    
+
     public function riwayat_pesanan(){
         $transaksi = DB::table('transaksi')
                     ->join('users', 'users.id', '=', 'transaksi.id_user')

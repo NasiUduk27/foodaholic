@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produk;
+use App\Http\Controllers\Controller;
+use App\Models\Keranjang;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class UserController extends Controller
+class KeranjangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $keranjang = Keranjang::where('user_id', auth()->user()->id)->get();
+
+        return view('user.keranjang', compact('keranjang'));
     }
 
     /**
@@ -84,13 +86,21 @@ class UserController extends Controller
         //
     }
 
-    public function search(Request $request){
+    public function add_keranjang(Request $request){
+        
+        $request->validate([
+            'user_id' => 'required',
+            'produk_id' => 'required',
+        ]);
 
-        $cari = $request->produk;
-        $produk = DB::table('produk')
-                    ->where('nama_produk', 'like', '%'.$cari.'%')
-                    ->paginate(12);
-
-        return view('user.result', ['produk' => $produk]);
+        $keranjang = Keranjang::create([
+            'user_id' => $request->user_id,
+            'produk_id' => $request->produk_id,
+            'quantity' => 1,
+        ]);
+        
+        return response()->json([
+            'data' => $keranjang,
+        ]);
     }
 }

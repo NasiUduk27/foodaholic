@@ -3,36 +3,31 @@
 <script src="https://kit.fontawesome.com/d4cdca322c.js" crossorigin="anonymous"></script>
 
 <div class="container">
-    <div class="food-category">
-        <h2 class="text-center">Kategori Makanan</h2>
-        <div class="food-card-wrapper">
-            <div class="col-md-3">
-                <div class="food-card">
-                    <img src="images/hero-food.png" alt="">
-                    <h3 class="text-center">lorem</h3>
+    <h3>Ketegori Makanan Pilihan</h3>
+    <div class="card-deck">
+        <div class="card">
+            <img class="card-img-top" src="images/snack.jpg" alt="Card image cap">
+            <a href="https://www.example.com" class="card-link">
+                <div class="card-img-overlay">
+                    <small class="text">snack</small>
                 </div>
-            </div>
-            
-            <div class="col-md-3">
-                <div class="food-card">
-                    <img src="images/hero-food.png" alt="">
-                    <h3 class="text-center">lorem</h3>
+            </a>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="images/hero-food.png" alt="Card image cap">
+            <a href="https://www.example.com" class="card-link">
+                <div class="card-img-overlay">
+                    <small class="text-muted">tradisional</small>
                 </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="food-card">
-                    <img src="images/hero-food.png" alt="">
-                    <h3 class="text-center">lorem</h3>
+            </a>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="images/snack.jpg" alt="Card image cap">
+            <a href="https://www.example.com" class="card-link">
+                <div class="card-img-overlay">
+                    <small class="text-muted">fast food</small>
                 </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="food-card">
-                    <img src="images/hero-food.png" alt="">
-                    <h3 class="text-center">lorem</h3>
-                </div>
-            </div>
+            </a>
         </div>
     </div>
 </div>
