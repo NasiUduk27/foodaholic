@@ -10,7 +10,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="{{ url('/profile') }}" class="nav-link">
+        <a href="{{ url('/mitra/pesanan') }}" class="nav-link">
             <i class="nav-icon fas fa-shopping-cart"></i>
             <p>
                 Pesanan
@@ -26,7 +26,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="{{ url('/profile') }}" class="nav-link">
+        <a href="{{ url('/mitra/riwayat-pesanan') }}" class="nav-link">
             <i class="nav-icon fas fa-history"></i>
             <p>
                 Riwayat Pemesanan

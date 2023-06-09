@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,8 @@ Route::middleware(['auth', 'user-access:2'])->group(function(){
     Route::get('/mitra/home', [App\Http\Controllers\MitraController::class, 'index'])->name('mitra.home');
     Route::get('/mitra/produk', [App\Http\Controllers\ProdukController::class, 'index']);
     Route::resource('/mitra/produk', ProdukController::class);
+    Route::get('/mitra/pesanan', [TransaksiController::class, 'index']);
+    Route::get('/mitra/riwayat-pesanan', [TransaksiController::class, 'riwayat_pesanan']);
 });
 
 Route::middleware(['auth', 'user-access:0'])->group(function(){
