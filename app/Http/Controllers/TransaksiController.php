@@ -17,7 +17,8 @@ class TransaksiController extends Controller
     {
         $transaksi = DB::table('transaksi')
                     ->join('users', 'users.id', '=', 'transaksi.id_user')
-                    ->join('produk', 'produk.id', '=', 'transaksi.id_produk')
+                    ->join('transaksi_produk', 'transaksi_produk.transaksi_id', '=', 'transaksi.id')
+                    ->join('produk', 'produk.id', '=', 'transaksi_produk.produk_id')
                     ->join('mitra', 'mitra.id', '=', 'transaksi.id_mitra')
                     ->select('users.username', 'produk.nama_produk', 'mitra.nama_mitra', 'transaksi.*')
                     ->where('transaksi.id_mitra', auth()->user()->id)
@@ -96,12 +97,28 @@ class TransaksiController extends Controller
     public function riwayat_pesanan(){
         $transaksi = DB::table('transaksi')
                     ->join('users', 'users.id', '=', 'transaksi.id_user')
-                    ->join('produk', 'produk.id', '=', 'transaksi.id_produk')
+                    ->join('transaksi_produk', 'transaksi_produk.transaksi_id', '=', 'transaksi.id')
+                    ->join('produk', 'produk.id', '=', 'transaksi_produk.produk_id')
                     ->join('mitra', 'mitra.id', '=', 'transaksi.id_mitra')
-                    ->select('users.username', 'produk.nama_produk', 'mitra.nama_mitra', 'transaksi.*')
+                    ->select('users.username', 'produk.nama_produk', 'mitra.nama_mitra', 'transaksi.*, transaksi_produk.*')
                     ->where('transaksi.id_mitra', auth()->user()->id)
                     ->where('transaksi.updated_at', '!=', null)
                     ->paginate(5);
         return view('mitra.riwayat_pesanan', ['transaksi' => $transaksi]);
     }
+
+    public function terima_pesanan($id){
+        $transaksi = Transaksi::find($id);
+        $transaksi->status = '2';
+        $transaksi->save();
+        return redirect('/mitra/pesanan');
+    }
+
+    public function tolak_pesanan($id){
+        $transaksi = Transaksi::find($id);
+        $transaksi->status = '0';
+        $transaksi->save();
+        return redirect('/mitra/pesanan');
+    }
+    public function 
 }

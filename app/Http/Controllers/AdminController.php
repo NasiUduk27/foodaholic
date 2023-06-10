@@ -144,7 +144,8 @@ class AdminController extends Controller
         // $transaksi = Transaksi::with('user')->paginate(5);
         $transaksi = DB::table('transaksi')
                     ->join('users', 'users.id', '=', 'transaksi.id_user')
-                    ->join('produk', 'produk.id', '=', 'transaksi.id_produk')
+                    ->join('transaksi_produk', 'transaksi_produk.transaksi_id', '=', 'transaksi.id')
+                    ->join('produk', 'produk.id', '=', 'transaksi_produk.produk_id')
                     ->join('mitra', 'mitra.id', '=', 'transaksi.id_mitra')
                     ->select('users.username', 'produk.nama_produk', 'mitra.nama_mitra', 'transaksi.*')
                     ->paginate(5);

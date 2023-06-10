@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function(){
     Route::get('/profile',[ProfileController::class, 'edit'])->name('profile');
     Route::get('/keranjang/',[KeranjangController::class, 'index'])->name('user.keranjang');
     Route::post('/keranjang/add',[KeranjangController::class, 'add_keranjang'])->name('user.add_keranjang');
+    ROute::get('/pesanan', [UserController::class, 'pesanan'])->name('pesanan');
 });
 
 Route::middleware(['auth', 'user-access:2'])->group(function(){
@@ -50,6 +52,10 @@ Route::middleware(['auth', 'user-access:2'])->group(function(){
     Route::resource('/mitra/produk', ProdukController::class);
     Route::get('/mitra/pesanan', [TransaksiController::class, 'index']);
     Route::get('/mitra/riwayat-pesanan', [TransaksiController::class, 'riwayat_pesanan']);
+    Route::get('/mitra/pesanan/terima/{id}' , [TransaksiController::class, 'terima_pesanan'])->name('mitra.terima');
+    Route::get('/mitra/pesanan/tolak/{id}' , [TransaksiController::class, 'tolak_pesanan'])->name('mitra.tolak');
+    Route::get('/mitra/pesanan/siap/{id}' , [TransaksiController::class, 'pesanan_siap'])->name('mitra.siap');
+    Route::get('/mitra/pesanan/selesai/{id}' , [TransaksiController::class, 'pesanan_selesai'])->name('mitra.selesai');
 });
 
 Route::middleware(['auth', 'user-access:0'])->group(function(){

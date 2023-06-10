@@ -42,6 +42,7 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
+                            <th>Id Transaksi</th>
                             <th>Nama User</th>
                             <th>Produk</th>
                             <th>Mitra</th>
@@ -53,17 +54,40 @@
                     </thead>
                     <tbody>
                         @if($transaksi->count() > 0)
-                        @foreach($transaksi as $m)
-                        <tr>
-                            <td>{{$m->username}}</td>
-                            <td>{{$m->nama_produk}}</td>
-                            <td>{{$m->nama_mitra}}</td>
-                            <td>{{$m->status}}</td>
-                            <td>{{$m->nominal}}</td>
-                            <td>{{$m->created_at}}</td>
-                            <td>{{$m->updated_at}}</td>
-                        </tr>
+                        @foreach($transaksi as $key => $m)
+                        @if($key === 0 || $m->id !== $transaksi[$key - 1]->id)
+                            <tr>
+                                <td>{{$m->id}}</td>
+                                <td>{{$m->username}}</td>
+                                <td>
+                                    @foreach($transaksi as $item)
+                                        @if($item->username === $m->username)
+                                            {{$item->nama_produk}}<br>
+                                        @endif
+                                    @endforeach
+                                </td>
+                                <td>{{$m->nama_mitra}}</td>
+                                <td>
+                                    @if($m->status === '0')
+                                        <span class="badge badge-info">Menunggu ditolak</span>
+                                    @elseif($m->status === '1')
+                                        <span class="badge badge-warning">Menunggu Konfirmasi</span>
+                                    @elseif($m->status === '2')
+                                        <span class="badge badge-success">Pesanan Diterima</span>
+                                    @elseif($m->status === '3')
+                                        <span class="badge badge-danger">Pesanan Siap</span>
+                                    @elseif($m->status === '4')
+                                        <span class="badge badge-primary">Pesanan Selesai</span>
+                                    @elseif($m->status === '5')
+                                        <span class="badge badge-danger">Pesanan Dibatalkan</span>
+                                    @endif</td>
+                                <td>{{$m->total}}</td>
+                                <td>{{$m->created_at}}</td>
+                                <td>{{$m->updated_at}}</td>
+                            </tr>
+                        @endif
                         @endforeach
+
                         @else
                         <tr>
                             <td colspan="6" class="text-center">Data tidak ada</td>
