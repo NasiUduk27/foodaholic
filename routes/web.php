@@ -52,21 +52,16 @@ Route::middleware(['auth', 'user-access:2'])->group(function(){
     Route::resource('/mitra/produk', ProdukController::class);
     Route::get('/mitra/pesanan', [TransaksiController::class, 'index']);
     Route::get('/mitra/riwayat-pesanan', [TransaksiController::class, 'riwayat_pesanan']);
-    Route::get('/mitra/pesanan/terima/{id}' , [TransaksiController::class, 'terima_pesanan'])->name('mitra.terima');
-    Route::get('/mitra/pesanan/tolak/{id}' , [TransaksiController::class, 'tolak_pesanan'])->name('mitra.tolak');
-    Route::get('/mitra/pesanan/siap/{id}' , [TransaksiController::class, 'pesanan_siap'])->name('mitra.siap');
-    Route::get('/mitra/pesanan/selesai/{id}' , [TransaksiController::class, 'pesanan_selesai'])->name('mitra.selesai');
+    Route::post('/mitra/pesanan/edit-status' , [TransaksiController::class, 'edit_status']);
 });
 
 Route::middleware(['auth', 'user-access:0'])->group(function(){
     Route::resource('/admin/', AdminController::class);
     Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
     Route::get('/admin/mitra', [AdminController::class, 'mitra'])->name('admin.mitra');
-    Route::get('/admin/mitra/verifikasi/{id}', [AdminController::class, 'terima_mitra']);
-    Route::get('/admin/mitra/tolak/{id}', [AdminController::class, 'tolak_mitra']);
+    Route::get('/admin/mitra/verifikasi/', [AdminController::class, 'edit_verifikasi']);
     Route::get('/admin/mitra/detail/{id}', [AdminController::class, 'detail_mitra']);
     Route::get('/admin/mitra/produk/{id}', [AdminController::class, 'show_produk']);
-    Route::get('/admin/mitra/hapus-verifikasi/{id}', [AdminController::class, 'hapus_verifikasi']);
     Route::get('/admin/transaksi', [AdminController::class, 'transaksi'])->name('admin.transaksi');
     Route::get('admin/user', [AdminController::class, 'show_user'])->name('admin.user');
     Route::get('admin/user/detail/{id}', [AdminController::class, 'detail_user']);

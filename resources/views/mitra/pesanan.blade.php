@@ -59,7 +59,7 @@
                                 <td>
                                     @foreach($transaksi as $item)
                                         @if($item->username === $m->username)
-                                            {{$item->nama_produk}}<br>
+                                            {{$item->nama_produk}},<br>
                                         @endif
                                     @endforeach
                                 </td>
@@ -85,12 +85,32 @@
                                 <td>
                                 <td>
                                     @if($m->status === '1')
-                                        <a href="{{ url('/mitra//'. $m->id) }}" class="btn btn-primary">Terima</a>
-                                        <a href="{{ url('/mitra/tolak/'. $m->id) }}" class="btn btn-danger">Tolak</a>
+                                        <form action="{{ url('/mitra/pesanan/edit-status') }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $m->id }}">
+                                            <input type="hidden" name="status" value="2">
+                                            <button type="submit" class="btn btn-primary">Terima</button>
+                                        </form>
+                                        <form action="{{ url('/mitra/pesanan/edit-status') }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $m->id }}">
+                                            <input type="hidden" name="status" value="0">
+                                            <button type="submit" class="btn btn-danger">Tolak</button>
+                                        </form>
                                     @elseif($m->status === '2')
-                                        <a href="{{ url('/mitra/siap/'. $m->id) }}" class="btn btn-primary">Siap</a>
-                                    @elseif($m->status === '3')
-                                        <a href="{{ url('/mitra/selesai/'. $m->id) }}" class="btn btn-primary">Selesai</a>
+                                        <form action="{{ url('/mitra/pesanan/edit-status') }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $m->id }}">
+                                            <input type="hidden" name="status" value="3">
+                                            <button type="submit" class="btn btn-primary">Siap</button>
+                                        </form>
+                                    @elseif($m->status === '4')
+                                        <form action="{{ url('/mitra/pesanan/edit-status') }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $m->id }}">
+                                            <input type="hidden" name="status" value="5">
+                                            <button type="submit" class="btn btn-primary">Selesai</button>
+                                        </form>
                                     @endif
                                 </td>
                                 </td>

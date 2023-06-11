@@ -108,28 +108,15 @@ class AdminController extends Controller
     }
 
 
-    public function terima_mitra($id)
-    {
-        $mitra = Mitra::find($id);
-        $mitra->status_verifikasi = 1;
+    public function edit_verifikasi(Request $request){
+        $request->validate([
+            'id' => 'required',
+            'status' => 'required',
+        ]);
+        $mitra = Mitra::find($request->id);
+        $mitra->status_verifikasi = $request->status;
         $mitra->save();
-        return redirect('/admin/mitra/detail/' . $id);
-    }
-
-    public function tolak_mitra($id)
-    {
-        $mitra = Mitra::find($id);
-        $mitra->status_verifikasi = 2;
-        $mitra->save();
-        return redirect('/admin/mitra/detail/' . $id);
-    }
-
-    public function hapus_verifikasi($id)
-    {
-        $mitra = Mitra::find($id);
-        $mitra->status_verifikasi = 0;
-        $mitra->save();
-        return redirect('/admin/mitra/detail/' . $id);
+        return redirect('/admin/mitra/detail/' . $request->id);
     }
 
     public function show_produk($id)

@@ -48,7 +48,7 @@
                             <th>Status</th>
                             <th>Nominal</th>
                             <th>Transaksi Dibuat</th>
-                            <th>Action</th>
+                            <th>Terakhir Diubah</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,13 +60,13 @@
                                 <td>
                                     @foreach($transaksi as $item)
                                         @if($item->username === $m->username)
-                                            {{$item->nama_produk}}<br>
+                                            {{$item->nama_produk}},<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td>
                                     @if($m->status === '0')
-                                        <span class="badge badge-info">Menunggu ditolak</span>
+                                        <span class="badge badge-info">Pesanan ditolak</span>
                                     @elseif($m->status === '1')
                                         <span class="badge badge-warning">Menunggu Konfirmasi</span>
                                     @elseif($m->status === '2')
@@ -83,16 +83,7 @@
                                 </td>
                                 <td>{{$m->total}}</td>
                                 <td>{{$m->created_at}}</td>
-                                <td>
-                                    @if($m->status === '1')
-                                        <a href="{{ url('mitra.terima', $m->id) }}" class="btn btn-primary">Terima</a>
-                                        <a href="{{ route('mitra.tolak', $m->id) }}" class="btn btn-danger">Tolak</a>
-                                    @elseif($m->status === '2')
-                                        <a href="{{ route('mitra.siap', $m->id) }}" class="btn btn-primary">Siap</a>
-                                    @elseif($m->status === '3')
-                                        <a href="{{ route('mitra.selesai', $m->id) }}" class="btn btn-primary">Selesai</a>
-                                    @endif
-                                </td>
+                                <td>{{$m->updated_at}}</td>
                             </tr>
                         @endif
                         @endforeach

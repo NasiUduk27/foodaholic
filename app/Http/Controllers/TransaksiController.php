@@ -107,18 +107,14 @@ class TransaksiController extends Controller
         return view('mitra.riwayat_pesanan', ['transaksi' => $transaksi]);
     }
 
-    public function terima_pesanan($id){
-        $transaksi = Transaksi::find($id);
-        $transaksi->status = '2';
+    public function edit_status(Request $request){
+        $request->validate([
+            'id' => 'required',
+            'status' => 'required'
+        ]);
+        $transaksi = Transaksi::find($request->id);
+        $transaksi->status = $request->status;
         $transaksi->save();
         return redirect('/mitra/pesanan');
     }
-
-    public function tolak_pesanan($id){
-        $transaksi = Transaksi::find($id);
-        $transaksi->status = '0';
-        $transaksi->save();
-        return redirect('/mitra/pesanan');
-    }
-    public function 
 }
