@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Auth;
                     <a class="nav-link" href="/about_us">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pesanan Saya</a>
+                    <a class="nav-link" href="/pesanan">Pesanan Saya</a>
                 </li>
             </ul>
 
