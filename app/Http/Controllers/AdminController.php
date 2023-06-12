@@ -110,28 +110,15 @@ class AdminController extends Controller
     }
 
 
-    public function terima_mitra($id)
-    {
-        $mitra = Mitra::find($id);
-        $mitra->status_verifikasi = 1;
+    public function edit_verifikasi(Request $request){
+        $request->validate([
+            'id' => 'required',
+            'status' => 'required',
+        ]);
+        $mitra = Mitra::find($request->id);
+        $mitra->status_verifikasi = $request->status;
         $mitra->save();
-        return redirect('/admin/mitra/detail/' . $id);
-    }
-
-    public function tolak_mitra($id)
-    {
-        $mitra = Mitra::find($id);
-        $mitra->status_verifikasi = 2;
-        $mitra->save();
-        return redirect('/admin/mitra/detail/' . $id);
-    }
-
-    public function hapus_verifikasi($id)
-    {
-        $mitra = Mitra::find($id);
-        $mitra->status_verifikasi = 0;
-        $mitra->save();
-        return redirect('/admin/mitra/detail/' . $id);
+        return redirect('/admin/mitra/detail/' . $request->id);
     }
 
     public function show_produk($id)
@@ -146,10 +133,49 @@ class AdminController extends Controller
         // $transaksi = Transaksi::with('user')->paginate(5);
         $transaksi = DB::table('transaksi')
                     ->join('users', 'users.id', '=', 'transaksi.id_user')
-                    ->join('produk', 'produk.id', '=', 'transaksi.id_produk')
+                    ->join('transaksi_produk', 'transaksi_produk.transaksi_id', '=', 'transaksi.id')
+                    ->join('produk', 'produk.id', '=', 'transaksi_produk.produk_id')
                     ->join('mitra', 'mitra.id', '=', 'transaksi.id_mitra')
                     ->select('users.username', 'produk.nama_produk', 'mitra.nama_mitra', 'transaksi.*')
                     ->paginate(5);
         return view('admin.transaksi', ['transaksi' => $transaksi]);
+    }
+
+    public function show_user(Request $request)
+    {
+        $search = $request->query('search');
+
+        $user = User::where('name', 'LIKE', "%{$search}%")
+            ->where('level', '1')
+            ->orderBy('id', 'DESC')
+            ->paginate(10)->withQueryString();
+        return view('admin.user', ['user' => $user]);
+    }
+
+    public function detail_user($id)
+    {
+        $user = User::find($id);
+        $transaksi = DB::table('transaksi')
+                    ->join('users', 'users.id', '=', 'transaksi.id_user')
+                    ->join('produk', 'produk.id', '=', 'transaksi.id_produk')
+                    ->join('mitra', 'mitra.id', '=', 'transaksi.id_mitra')
+                    ->select('users.username', 'produk.nama_produk', 'mitra.nama_mitra', 'transaksi.*')
+                    ->where('transaksi.id_user', $id)
+                    ->paginate(5);
+        return view('admin.detail_user', ['user' => $user, 'transaksi' => $transaksi]);
+    }
+
+    public function delete_user($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/admin/user');
+    }
+
+    public function delete_mitra($id)
+    {
+        $mitra = Mitra::find($id);
+        $mitra->delete();
+        return redirect('/admin/mitra');
     }
 }

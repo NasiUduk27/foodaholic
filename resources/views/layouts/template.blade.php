@@ -7,6 +7,7 @@
     <title>{{ $title ?? 'Dashboard' }}</title>
 
     <!-- Google Font: Source Sans Pro -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->

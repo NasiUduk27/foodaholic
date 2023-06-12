@@ -1,6 +1,6 @@
-@extends('layouts.template')
+@extends('layouts.template', ['title' => 'Foodaholic | Produk Mitra'])
 @section('sidebar')
-@include('layouts.sidebar', array('level' => 'admin'))
+@include('layouts.sidebar', array('level' => 'mitra'))
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -9,11 +9,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Data Transaksi</h1>
+                    <h1>Pesanan</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Data Transaksi</li>
+                        <li class="breadcrumb-item active">Daftar Pesanan</li>
                     </ol>
                 </div>
             </div>
@@ -26,7 +26,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Tabel Transaksi</h3>
+                <h3 class="card-title">Pesanan Selesai</h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -42,14 +42,13 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Id Transaksi</th>
                             <th>Nama User</th>
                             <th>Produk</th>
                             <th>Mitra</th>
                             <th>Status</th>
                             <th>Nominal</th>
                             <th>Transaksi Dibuat</th>
-                            <th>Transaksi Selesai</th>
+                            <th>Terakhir Diubah</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,19 +56,17 @@
                         @foreach($transaksi as $key => $m)
                         @if($key === 0 || $m->id !== $transaksi[$key - 1]->id)
                             <tr>
-                                <td>{{$m->id}}</td>
                                 <td>{{$m->username}}</td>
                                 <td>
                                     @foreach($transaksi as $item)
                                         @if($item->username === $m->username)
-                                            {{$item->nama_produk}}<br>
+                                            {{$item->nama_produk}},<br>
                                         @endif
                                     @endforeach
                                 </td>
-                                <td>{{$m->nama_mitra}}</td>
                                 <td>
                                     @if($m->status === '0')
-                                        <span class="badge badge-info">Menunggu ditolak</span>
+                                        <span class="badge badge-info">Pesanan ditolak</span>
                                     @elseif($m->status === '1')
                                         <span class="badge badge-warning">Menunggu Konfirmasi</span>
                                     @elseif($m->status === '2')
@@ -77,17 +74,19 @@
                                     @elseif($m->status === '3')
                                         <span class="badge badge-danger">Pesanan Siap</span>
                                     @elseif($m->status === '4')
-                                        <span class="badge badge-primary">Pesanan Selesai</span>
+                                        <span class="badge badge-primary">Pesanan Selesai(user)</span>
                                     @elseif($m->status === '5')
-                                        <span class="badge badge-danger">Pesanan Dibatalkan</span>
-                                    @endif</td>
+                                        <span class="badge badge-danger">Pesanan Selesai</span>
+                                    @elseif($m->status === '6')
+                                        <span class="badge badge-danger">Pesanan dibatalkan</span>
+                                    @endif
+                                </td>
                                 <td>{{$m->total}}</td>
                                 <td>{{$m->created_at}}</td>
                                 <td>{{$m->updated_at}}</td>
                             </tr>
                         @endif
                         @endforeach
-
                         @else
                         <tr>
                             <td colspan="6" class="text-center">Data tidak ada</td>
@@ -104,7 +103,7 @@
                         <!--Tampilkan pagination-->
                         {{$transaksi->links()}}
                     </div>
-                    <a href="{{ route('admin.mitra') }}" class="btn btn-default">Kembali</a>
+                    <a href="{{ route('mitra.home') }}" class="btn btn-default">Kembali</a>
                 </div>
             </div>
             <!-- /.card-footer-->

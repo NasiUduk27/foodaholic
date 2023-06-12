@@ -55,13 +55,27 @@
                 </ul>
         </div>
         @if ($mitra->status_verifikasi == 0)
-            <div class="btn-container">
-                <a href="{{ url('/admin/mitra/verifikasi/'. $mitra->id) }}" class="btn btn-sm btn-warning custom-btn">Terima Verifikasi</a>
-                <a href="{{ url('/admin/mitra/tolak/'. $mitra->id) }}" class="btn btn-sm btn-danger custom-btn">Tolak Verifikasi</a>
-            </div>
+            <form action="{{ url('/admin/mitra/verifikasi) }}" method="POST" style="display: inline;">
+                @csrf
+                <input type="hidden" name="id" value="{{ $mitra->id}}">
+                <input type="hidden" name="status" value="1">
+                <button type="submit" class="btn btn-sm btn-warning custom-btn">Terima Verifikasi</button>
+            </form>
+            <form action="{{ url('/admin/mitra/verifikasi) }}" method="POST" style="display: inline;">
+                @csrf
+                <input type="hidden" name="id" value="{{ $mitra->id}}">
+                <input type="hidden" name="status" value="2">
+                <button type="submit" class="btn btn-sm btn-danger custom-btn">Tolak Verifikasi</button>
+            </form>
         @else
-            <a href="{{ url('/admin/mitra/hapus-verifikasi/'. $mitra->id) }}" class="btn btn-sm btn-danger custom-btn">Hapus Verifikasi</a>
+            <form action="{{ url('/admin/mitra/verifikasi) }}" method="POST" style="display: inline;">
+                @csrf
+                <input type="hidden" name="id" value="{{ $mitra->id}}">
+                <input type="hidden" name="status" value="2">
+                <button type="submit" class="btn btn-sm btn-danger custom-btn">Hapus Verifikasi</button>
+            </form>
         @endif
+
         <!-- /.card-body -->
         <!-- /.card-body -->
         <div class="card-footer">

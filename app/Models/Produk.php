@@ -24,7 +24,11 @@ class Produk extends Model
         return $this->belongsTo(Mitra::class);
     }
 
+    public function keranjang(){
+        return $this->hasMany(Keranjang::class);
+    }
+    
     public function transaksi(){
-        return $this->hasMany(Transaksi::class);
+        return $this->belongsToMany(Transaksi::class, 'transaksi_produk', 'produk_id', 'transaksi_id')->withPivot('qty');
     }
 }
