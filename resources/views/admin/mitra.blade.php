@@ -22,17 +22,18 @@
 
     <!-- Main content -->
     <section class="content">
-      <form method="GET" action="{{ route('admin.mitra') }}">
-        <div class="input-group mb-3">
-            <input type="text" name="search" class="form-control" placeholder="Cari Mitra" value="{{ request()->query('search') }}">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
+        <form method="GET" action="{{ route('admin.mitra') }}">
+            <div class="input-group mb-3">
+                <input type="text" name="search" class="form-control" placeholder="Cari Mitra"
+                    value="{{ request()->query('search') }}">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </div>
             </div>
-        </div>
-      </form>
+        </form>
 
         @if(session()->has('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
+        <div class="alert alert-success">{{ session('success') }}</div>
         @endif
         <!-- Default box -->
         <div class="card">
@@ -79,12 +80,18 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ url('/admin/mitra/produk/'. $m->id) }}" class="btn btn-sm btn-warning">Produk</a>
-                                <a href="{{ url('/admin/mitra/detail/'.$m->id) }}" class="btn btn-sm btn-primary">Detail</a>
+                                @if($m->status_verifikasi != 0)
+                                <a href="{{ url('/admin/mitra/produk/'. $m->id) }}"
+                                    class="btn btn-sm btn-warning">Produk</a>
+                                @endif
+                                <a href="{{ url('/admin/mitra/detail/'.$m->id) }}"
+                                    class="btn btn-sm btn-primary">Detail</a>
                                 <form method="POST" action="{{ url('/admin/mitra/delete'.$m->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Apakah anda yakin ingin menghapus data {{ $m->nama_mitra }}?')" class="btn btn-sm btn-danger">Hapus</button>
+                                    <button type="submit"
+                                        onclick="return confirm('Apakah anda yakin ingin menghapus data {{ $m->nama_mitra }}?')"
+                                        class="btn btn-sm btn-danger">Hapus</button>
                                 </form>
                             </td>
                         </tr>

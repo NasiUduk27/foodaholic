@@ -24,7 +24,10 @@ use Illuminate\Support\Facades\Auth;
                     <a class="nav-link" href="/about_us">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pesanan Saya</a>
+                    <a class="nav-link" href="{{ url('pesanan') }}">Pesanan Saya</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('daftar-mitra') }}">Daftar Mitra</a>
                 </li>
             </ul>
 
