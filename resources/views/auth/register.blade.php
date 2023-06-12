@@ -22,47 +22,32 @@
             <div class="imageHero">
                 <img src="{{ asset('images/register-bro.png') }}" alt="">
             </div>
-            <div class="login-section">
-                <h4>Register</h4>
+            <div class="">
                 <div class="register-form-container">
                     <form action="{{ url('/register') }}" method="post" class="register-form">
+                        <h4 class="text-center mb-3">Register</h4>
                         @csrf
                         <div class="mb-4 d-flex flex-column">
-                            <label for="username">Username</label>
-                            <input name="username" type="username" class="form-control">
+                            <label for="username" class="mb-0 pb-0">Username</label>
+                            <input name="username" type="username" class="form-control mt-0 pt-1 pb-1">
                         </div>
-                        <div class="input-group mb-3">
-                            <input type="name" name="name" class="form-control" placeholder="Name">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-user"></span>
-                                </div>
-                            </div>
+                        <div class="mb-4 d-flex flex-column">
+                            <label for="name" class="mb-0 pb-0">Name</label>
+                            <input type="name" name="name" class="form-control  mt-0 pt-1 pb-1">
                         </div>
-                        <div class="input-group mb-3">
-                            <input type="email" name="email" class="form-control" placeholder="Email">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-envelope"></span>
-                                </div>
-                            </div>
+                        <div class="mb-4 d-flex flex-column">
+                            <label for="email" class="mb-0 pb-0">Email</label>
+                            <input type="email" name="email" class="form-control  mt-0 pt-1 pb-1">
+
                         </div>
-                        <div class="input-group mb-3">
-                            <input type="password" name="password" class="form-control" placeholder="Password">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-lock"></span>
-                                </div>
-                            </div>
+                        <div class="mb-4 d-flex flex-column">
+                            <label for="password" class="mb-0 pb-0">Password</label>
+                            <input type="password" name="password" class="form-control  mt-0 pt-1 pb-1">
+
                         </div>
-                        <div class="input-group mb-3">
-                            <input type="password" name="password_confirmation" class="form-control"
-                                placeholder="Password Confirmation">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-lock"></span>
-                                </div>
-                            </div>
+                        <div class="mb-4 d-flex flex-column">
+                            <label for="password_confirmation" class="mb-0 pb-0">Konfirmasi Password</label>
+                            <input type="password" name="password_confirmation" class="form-control  mt-0 pt-1 pb-1">
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Register</button>
                         Sudah Punya Akun?
@@ -73,7 +58,6 @@
             </div>
         </div>
     </div>
-
     <!-- jQuery -->
     <script src="{{ asset('assets/plugins/jquery/jquery.min.js' )}}"></script>
     <!-- Bootstrap 4 -->

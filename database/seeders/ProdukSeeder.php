@@ -16,7 +16,7 @@ class ProdukSeeder extends Seeder
     public function run()
     {
         DB::table('produk')->insert([
-            'id_mitra' => '1',
+            'id_mitra' => '2',
             'nama_produk' => 'Nasi Kotak',
             'harga' => '7000',
             'rating' => '4.7',
