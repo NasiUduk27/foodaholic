@@ -13,7 +13,7 @@
 
     <style>
         .main-content {
-            min-height: calc(100vh - 160px - 152px);
+            min-height: calc(100vh - 155px - 152px);
         }
 
     </style>
