@@ -1,6 +1,6 @@
-@extends('user.template_without_search', ['title' => 'Foodaholic | Keranjang User'])
+@extends('user.template_without_search', ['title' => 'Foodaholic | Daftar Mitra'])
 @section('content')
-<div class="container mt-5 mb-5">
+<div class="container mt-5 mb-5 ">
     @if($dataMitra->count() == 0)
     <form action="{{ url('/register-mitra') }}" method="post" class="register-form" enctype="multipart/form-data">
         @csrf

@@ -23,9 +23,10 @@
                 <img src="{{ asset('images/login-bro.png') }}" alt="">
             </div>
             <div class="login-section">
-                <h4>Login</h4>
+               
                 <div class="login-form-container">
                     <form action="{{ url('/login') }}" method="post" class="login-form">
+                        <h4 class = "text-center mb-4">Login</h4>
                         @csrf
                         <div class="mb-4 d-flex flex-column">
                             <label for="username">Username</label>
