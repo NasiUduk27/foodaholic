@@ -1,15 +1,16 @@
 @extends('user.template_without_search', ['title' => 'Foodaholic | Keranjang User'])
 @section('content')
 <div class="container mt-5 mb-5">
-    @if($keranjang->count() > 0)
-    <form method="POST" action="{{ url('checkout') }}">
+    @if($pesanan->count() > 0)
+    <form method="POST" action="{{ url('order') }}">
         @csrf
-        @foreach($keranjang as $k => $p)
+        @foreach($pesanan as $k => $p)
         <div class="p-5">
             <h2>{{$k}}</h2>
             @foreach($p as $i => $k)
             <tr>
-                <input type="checkbox" name="produk[]" value="{{ $k->produk_id }}" id="produk_{{ $k->produk_id }}">
+                <input type="hidden" name="produk[]" value="{{ $k->id }}" id="produk_{{ $k->id }}">
+                <input type="hidden" name="qty[]" value="{{ $k->qty }}" id="{{ $k->qty }}">
                 <td>{{$k->nama_produk}}</td>
                 <td>{{$k->foto_produk}}</td>
                 <td>{{$k->harga}}</td>
@@ -20,7 +21,7 @@
         </div>
         @endforeach
 
-        <button type="submit">Checkout</button>
+        <button type="submit">Pesan</button>
     </form>
     @else
     <td colspan="6" class="text-center">keranjang tidak ada</td>

@@ -31,4 +31,8 @@ class Produk extends Model
     public function transaksi(){
         return $this->belongsToMany(Transaksi::class, 'transaksi_produk', 'produk_id', 'transaksi_id')->withPivot('qty');
     }
+
+    public function user(){
+        return $this->belongsToMany(User::class, 'keranjang', 'produk_id', 'user_id')->withPivot('qty');
+    }
 }

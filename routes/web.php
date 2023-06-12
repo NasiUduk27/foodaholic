@@ -42,6 +42,8 @@ Route::middleware(['auth', 'user-access:1'])->group(function(){
     Route::get('/profile',[ProfileController::class, 'edit'])->name('profile');
     Route::get('/keranjang/',[KeranjangController::class, 'index'])->name('user.keranjang');
     Route::post('/keranjang/add',[KeranjangController::class, 'add_keranjang'])->name('user.add_keranjang');
+    Route::post('/checkout',[TransaksiController::class, 'checkout'])->name('user.checkout');
+    Route::post('/order',[TransaksiController::class, 'store'])->name('user.order');
 });
 
 Route::middleware(['auth', 'user-access:2'])->group(function(){

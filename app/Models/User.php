@@ -47,4 +47,8 @@ class User extends Authenticatable
     public function transaksi(){
         return $this->hasMany(Transaksi::class);
     }
+
+    public function produk(){
+        return $this->belongsToMany(Produk::class, 'keranjang', 'user_id', 'produk_id')->withPivot('qty');
+    }
 }
