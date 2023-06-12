@@ -20,22 +20,11 @@ use Illuminate\Support\Facades\Auth;
                 <li class="nav-item">
                     <a class="nav-link" href="/home">Home</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Product
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="productDropdown">
-                        <a class="dropdown-item" href="#">Product 1</a>
-                        <a class="dropdown-item" href="#">Product 2</a>
-                        <a class="dropdown-item" href="#">Product 3</a>
-                    </div>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/about_us">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pesanan Saya</a>
+                    <a class="nav-link" href="/pesanan">Pesanan Saya</a>
                 </li>
             </ul>
 
