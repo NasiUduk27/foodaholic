@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -33,6 +34,10 @@ class HomeController extends Controller
 
     public function userHome()
     {
-        return view('user.user');
+        $produk = DB::table('produk')
+                ->join('mitra', 'produk.id_mitra', '=', 'mitra.id')
+                ->select('produk.*', 'mitra.nama_mitra')
+                ->get();
+        return view('user.user')->with('produk', $produk);
     }
 }

@@ -51,6 +51,9 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::post('/pesanan/edit-status' , [TransaksiController::class, 'edit_status']);
     Route::post('/checkout',[TransaksiController::class, 'checkout'])->name('user.checkout');
     Route::post('/order',[TransaksiController::class, 'store'])->name('user.order');
+    Route::post('/checkout',[TransaksiController::class, 'checkout'])->name('user.checkout');
+    Route::post('/order',[TransaksiController::class, 'store'])->name('user.order');
+    Route::get('/pesanan', [UserController::class, 'pesanan'])->name('pesanan');
 });
 
 Route::middleware(['auth', 'user-access:2'])->group(function () {
