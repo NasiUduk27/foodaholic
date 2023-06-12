@@ -108,6 +108,7 @@ class TransaksiController extends Controller
     }
 
     public function edit_status(Request $request){
+        $user = auth()->user();
         $request->validate([
             'id' => 'required',
             'status' => 'required'
@@ -115,6 +116,12 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::find($request->id);
         $transaksi->status = $request->status;
         $transaksi->save();
-        return redirect('/mitra/pesanan');
+        if($user->level == '2'){
+            return redirect('/mitra/pesanan');
+        }else{
+            return redirect('/pesanan');
+        }
+        
     }
+    
 }

@@ -86,3 +86,14 @@ h1{
 .btn-container a {
     display: inline-block;
 }
+
+.item {
+  display: flex;
+}
+
+.item-details {
+  display: grid;
+  grid-template-columns: 90px 1fr 70px 1fr;
+  gap: 10px;
+}
+

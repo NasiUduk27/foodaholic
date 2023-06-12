@@ -107,18 +107,6 @@ class AdminController extends Controller
         return view('admin.detail_mitra', ['mitra' => $mitra]);
     }
 
-
-    public function edit_verifikasi(Request $request){
-        $request->validate([
-            'id' => 'required',
-            'status' => 'required',
-        ]);
-        $mitra = Mitra::find($request->id);
-        $mitra->status_verifikasi = $request->status;
-        $mitra->save();
-        return redirect('/admin/mitra/detail/' . $request->id);
-    }
-
     public function show_produk($id)
     {
         $produk = Produk::where('id_mitra', $id)->first();

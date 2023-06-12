@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Mitra;
 use Illuminate\Http\Request;
 
 class MitraController extends Controller
@@ -81,5 +82,17 @@ class MitraController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    
+    public function edit_verifikasi(Request $request){
+        $request->validate([
+            'id' => 'required',
+            'status' => 'required',
+        ]);
+        $mitra = Mitra::find($request->id);
+        $mitra->status_verifikasi = $request->status;
+        $mitra->save();
+        return redirect('/admin/mitra/detail/' . $request->id);
     }
 }
