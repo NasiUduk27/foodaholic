@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 <div class="container">
     <div class="row">
         <div class="col-sm-4 preview">
-            <img src="{{ asset('images/' . $user->foto) }}" alt="">
+            <img src="{{ asset('storage/' . $user->foto) }}" alt="" width="250px" height="250px">
             <p>Nama : {{$user->name}}</p>
             <p>Email : {{$user->email}}</p>
             <p>Alamat : {{$user->alamat}}</p>
@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Auth;
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('profile') ? 'active' : '' }}"
-                                href="{{ route('profile') }}">Profil</a>
+                                href="{{ url('profile') }}">Profil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('pesanan') ? 'active' : '' }}" href="{{ route('pesanan') }}">Pesanan Saya</a>
