@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Mitra;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MitraController extends Controller
 {
@@ -58,7 +59,8 @@ class MitraController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mitra = auth()->user();
+        return view('mitra.edit', compact('mitra'));
     }
 
     /**
@@ -70,7 +72,30 @@ class MitraController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_mitra' => 'required|string|max:255',
+            'lokasi_bisnis' => 'required|string|max:255',
+            'detail_mitra' => 'string|max:255',
+            'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $mitra = Mitra::find(auth()->user()->id);
+        $mitra->nama_mitra = $request->get('nama_mitra');
+        $mitra->lokasi_bisnis = $request->get('lokasi_bisnis');
+        $mitra->detail_mitra = $request->get('detail_mitra');
+
+        if($mitra->foto && file_exists(storage_path('app/public/' . $mitra->foto))){
+            Storage::delete('public/' . $mitra->foto);
+        }
+        
+        $image_name = NULL;
+        if($request->file('foto')){
+            $image_name = $request->file('foto')->store('image', 'public');
+            $mitra->foto = $image_name;
+        }
+        $mitra->save();
+        return view('mitra.edit', compact('mitra'));
+
     }
 
     /**

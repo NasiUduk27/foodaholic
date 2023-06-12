@@ -56,7 +56,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
 });
 
 Route::middleware(['auth', 'user-access:2'])->group(function () {
-    Route::get('/mitra/home', [App\Http\Controllers\MitraController::class, 'index'])->name('mitra.home');
+    Route::resource('/mitra', MitraController::class);
     Route::get('/mitra/produk', [App\Http\Controllers\ProdukController::class, 'index']);
     Route::resource('/mitra/produk', ProdukController::class);
     Route::get('/mitra/pesanan', [TransaksiController::class, 'index']);
