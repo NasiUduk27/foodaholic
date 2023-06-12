@@ -44,7 +44,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::get('/search', [UserController::class, 'search'])->name('user.search');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
     Route::get('/search',[UserController::class, 'search'])->name('user.search');
-    Route::get('/profile',[ProfileController::class, 'edit'])->name('profile');
+    Route::resource('/profile', ProfileController::class);
     Route::get('/keranjang/',[KeranjangController::class, 'index'])->name('user.keranjang');
     Route::post('/keranjang/add',[KeranjangController::class, 'add_keranjang'])->name('user.add_keranjang');
     Route::get('/pesanan', [UserController::class, 'pesanan'])->name('pesanan');
@@ -53,7 +53,6 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::post('/order',[TransaksiController::class, 'store'])->name('user.order');
     Route::post('/checkout',[TransaksiController::class, 'checkout'])->name('user.checkout');
     Route::post('/order',[TransaksiController::class, 'store'])->name('user.order');
-    Route::get('/pesanan', [UserController::class, 'pesanan'])->name('pesanan');
 });
 
 Route::middleware(['auth', 'user-access:2'])->group(function () {

@@ -46,7 +46,12 @@ use Illuminate\Support\Facades\Auth;
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('profile') }}">
+                        <a class="nav-link" href="#">
+                            <img src="{{ asset('images/love.png') }}" alt="Love">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('profile') }}">
                             <img src="{{ asset('images/user.png') }}" alt="User" class="rounded-circle" width="30">
                         </a>
                     </li>

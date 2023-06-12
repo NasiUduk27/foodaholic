@@ -1,17 +1,20 @@
 @extends('layouts.user')
 @section('content')
+        <form method="post" enctype="multipart/form-data" action="{{ url('profile/'.auth()->user()->id) }}">
+            @csrf
+            @method('PUT')
             <h4>Edit Profile</h4>
 
             <div class="row">
                 <div class="col-md-4">Username
                     <div class="input-group">
                         <input type="text" value="{{ $user->username }}" class="form-control search-hero"
-                            placeholder="">
+                            placeholder="" name="username">
                     </div>
                 </div>
                 <div class="col-md-4 offset-md-4">Email
                     <div class="input-group">
-                        <input type="text" value="{{ $user->email }}" class="form-control search-hero" placeholder="">
+                        <input type="text" value="{{ $user->email }}" class="form-control search-hero" placeholder="" name="email">
                     </div>
                 </div>
             </div>
@@ -19,67 +22,37 @@
             <div class="row">
                 <div class="col-md-4">Nama Lengkap
                     <div class="input-group">
-                        <input type="text" value="{{ $user->name }}" class="form-control search-hero" placeholder="">
+                        <input type="text" value="{{ $user->name }}" class="form-control search-hero" placeholder="" name="name">
                     </div>
                 </div>
                 <div class="col-md-4 offset-md-4">No.Hp
                     <div class="input-group">
-                        <input type="text" value="{{ $user->no_hp }}" class="form-control search-hero" placeholder="">
+                        <input type="text" value="{{ $user->no_hp }}" class="form-control search-hero" placeholder="" name="no_hp">
                     </div>
                 </div>
             </div>
-
-            <div class="container">
-                <h4>Foto Profile</h4>
-                <form action="{{ route('profile') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <input type="file" name="profile_image" id="profile_image">
-                    </div>
-
-                    <button type="submit">Pilih foto</button>
-                </form>
-            </div>
-
-            <h4>Edit Profile</h4>
-
-            <div class="row">
-                <div class="col-md-4">Provinsi
-                    <div class="input-group">
-                        <input type="text" class="form-control search-hero" placeholder="">
-                    </div>
-                </div>
-                <div class="col-md-4 offset-md-4">Kota
-                    <div class="input-group">
-                        <input type="text" class="form-control search-hero" placeholder="">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">Kecamatan
-                    <div class="input-group">
-                        <input type="text" class="form-control search-hero" placeholder="">
-                    </div>
-                </div>
-                <div class="col-md-4 offset-md-4">Kode Pos
-                    <div class="input-group">
-                        <input type="text" class="form-control search-hero" placeholder="">
-                    </div>
-                </div>
-            </div>
+            
             <div class="row">
                 <div class="col">Alamat
                     <div class="input-group">
-                        <input type="text" class="form-control search-hero" placeholder="">
+                        <input type="text" value="{{ $user->alamat }}" class="form-control search-hero" placeholder="" name="alamat">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">Foto Profile
+                    <div class="form-group">
+                        <input type="file" name="profile_image" id="profile_image">
                     </div>
                 </div>
             </div>
 
             <div class="row mt-4">
                 <div class="col text-center">
-                    <a href="#" class="text-center">Save Profile</a>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </div>
-
+        </form>
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 @endsection
