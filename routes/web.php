@@ -44,8 +44,14 @@ Route::middleware(['auth', 'user-access:1'])->group(function(){
     Route::get('/profile',[ProfileController::class, 'edit'])->name('profile');
     Route::get('/keranjang/',[KeranjangController::class, 'index'])->name('user.keranjang');
     Route::post('/keranjang/add',[KeranjangController::class, 'add_keranjang'])->name('user.add_keranjang');
+<<<<<<< HEAD
     Route::get('/pesanan', [UserController::class, 'pesanan'])->name('pesanan');
     Route::post('/pesanan/edit-status' , [TransaksiController::class, 'edit_status']);
+=======
+    Route::post('/checkout',[TransaksiController::class, 'checkout'])->name('user.checkout');
+    Route::post('/order',[TransaksiController::class, 'store'])->name('user.order');
+    Route::get('/pesanan', [UserController::class, 'pesanan'])->name('pesanan');
+>>>>>>> dcac3cde597a844aed5deba6b44b0eef98ab7179
 });
 
 Route::middleware(['auth', 'user-access:2'])->group(function(){
