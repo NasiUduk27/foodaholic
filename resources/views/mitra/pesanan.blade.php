@@ -47,7 +47,8 @@
                             <th>Status</th>
                             <th>Nominal</th>
                             <th>Transaksi Dibuat</th>
-                            <th>Transaksi Selesai</th>
+                            <th>Terakhir Diubah</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,7 +83,7 @@
                                 </td>
                                 <td>{{$m->total}}</td>
                                 <td>{{$m->created_at}}</td>
-                                <td>
+                                <td>{{$m->updated_at}}</td>
                                 <td>
                                     @if($m->status === '1')
                                         <form action="{{ url('/mitra/pesanan/edit-status') }}" method="POST" style="display: inline;">

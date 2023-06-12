@@ -13,7 +13,7 @@
             <a href="https://id.linkedin.com/school/polinema-joss/"><i class="fab fa-linkedin"></i></a>
         </div>
         <div class="text-center">
-            <a href="#">Contact Us!</a>
+            <a href="https://www.facebook.com/polinema/">Contact Us!</a>
             <a href="{{ route('about_us') }}">About Us!</a>
             <a href="#">Gallery!</a>
             <a href="{{ route('faq') }}">FAQ</a>

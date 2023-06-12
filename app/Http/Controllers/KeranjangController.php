@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Keranjang;
+use App\Models\Produk;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KeranjangController extends Controller
 {
@@ -15,7 +18,14 @@ class KeranjangController extends Controller
      */
     public function index()
     {
-        $keranjang = Keranjang::where('user_id', auth()->user()->id)->get();
+        $keranjang = DB::table('keranjang')
+                    ->join('produk', 'keranjang.produk_id', '=', 'produk.id')
+                    ->join('mitra', 'produk.id_mitra', '=', 'mitra.id')
+                    ->select('keranjang.*', 'mitra.nama_mitra', 'produk.nama_produk', 'produk.harga', 'produk.foto_produk')
+                    ->where('keranjang.user_id', auth()->user()->id)
+                    ->get();
+
+        $keranjang = $keranjang->groupBy('nama_mitra');
 
         return view('user.keranjang', compact('keranjang'));
     }
@@ -93,10 +103,19 @@ class KeranjangController extends Controller
             'produk_id' => 'required',
         ]);
 
+        if(Keranjang::where('user_id', $request->user_id)->where('produk_id', $request->produk_id)->exists()){
+            $keranjang = Keranjang::where('user_id', $request->user_id)->where('produk_id', $request->produk_id)->first();
+            $keranjang->qty = $keranjang->qty + 1;
+            $keranjang->save();
+            return response()->json([
+                'data' => $keranjang,
+            ]);
+        }
+
         $keranjang = Keranjang::create([
             'user_id' => $request->user_id,
             'produk_id' => $request->produk_id,
-            'quantity' => 1,
+            'qty' => 1,
         ]);
         
         return response()->json([

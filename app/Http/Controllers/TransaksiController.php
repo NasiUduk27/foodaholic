@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
+use Doctrine\DBAL\Schema\ForeignKeyConstraint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -44,7 +45,45 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $total = 0;
+        $produk = DB::table('produk')
+                ->join('mitra', 'produk.id_mitra', '=', 'mitra.id')
+                ->join('keranjang', 'produk.id', '=', 'keranjang.produk_id')
+                ->select('produk.*', 'mitra.id as mitra_id', 'mitra.nama_mitra', 'keranjang.qty')
+                ->whereIn('produk.id', $request->produk)
+                ->get();
+        $produk = $produk->groupBy('nama_mitra');
+        
+        foreach($produk as $k => $p){
+            foreach($p as $i => $k){
+                $harga = DB::table('produk')->where('id', $k->id)->first()->harga;
+                $total += $harga * $k->qty;
+            }
+            $transaksi = DB::table('transaksi')
+                        ->insertGetId(
+                            [
+                                'id_mitra' => $k->mitra_id,
+                                'id_user' => auth()->user()->id,
+                                'status' => 1,
+                                'total' => $total
+                            ]
+                        );
+            foreach($p as $i => $k){
+                $data_transaksi_produk = DB::table('transaksi_produk')
+                        ->insert(
+                            [
+                                'transaksi_id' => $transaksi,
+                                'produk_id' => $k->id,
+                                'qty' => $k->qty
+                            ]
+                        );
+            }
+            $total = 0;
+        }
+        if($data_transaksi_produk){
+            return redirect()->route('user.home')->with('success', 'Pesanan berhasil dibuat');
+        }
+        return redirect()->route('user.home')->with('failed', 'Pesanan gagal dibuat');
     }
 
     /**
@@ -100,14 +139,15 @@ class TransaksiController extends Controller
                     ->join('transaksi_produk', 'transaksi_produk.transaksi_id', '=', 'transaksi.id')
                     ->join('produk', 'produk.id', '=', 'transaksi_produk.produk_id')
                     ->join('mitra', 'mitra.id', '=', 'transaksi.id_mitra')
-                    ->select('users.username', 'produk.nama_produk', 'mitra.nama_mitra', 'transaksi.*, transaksi_produk.*')
+                    ->select('users.username', 'produk.nama_produk', 'mitra.nama_mitra', 'transaksi.*')
                     ->where('transaksi.id_mitra', auth()->user()->id)
-                    ->where('transaksi.updated_at', '!=', null)
+                    ->where('transaksi.status', '!=', '5')
                     ->paginate(5);
         return view('mitra.riwayat_pesanan', ['transaksi' => $transaksi]);
     }
 
     public function edit_status(Request $request){
+        $user = auth()->user();
         $request->validate([
             'id' => 'required',
             'status' => 'required'
@@ -115,6 +155,12 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::find($request->id);
         $transaksi->status = $request->status;
         $transaksi->save();
-        return redirect('/mitra/pesanan');
+        if($user->level == '2'){
+            return redirect('/mitra/pesanan');
+        }else{
+            return redirect('/pesanan');
+        }
+        
     }
+    
 }

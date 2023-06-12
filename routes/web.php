@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\MitraController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\TransaksiController;
@@ -46,7 +47,10 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::get('/profile',[ProfileController::class, 'edit'])->name('profile');
     Route::get('/keranjang/',[KeranjangController::class, 'index'])->name('user.keranjang');
     Route::post('/keranjang/add',[KeranjangController::class, 'add_keranjang'])->name('user.add_keranjang');
-    ROute::get('/pesanan', [UserController::class, 'pesanan'])->name('pesanan');
+    Route::get('/pesanan', [UserController::class, 'pesanan'])->name('pesanan');
+    Route::post('/pesanan/edit-status' , [TransaksiController::class, 'edit_status']);
+    Route::post('/checkout',[TransaksiController::class, 'checkout'])->name('user.checkout');
+    Route::post('/order',[TransaksiController::class, 'store'])->name('user.order');
 });
 
 Route::middleware(['auth', 'user-access:2'])->group(function () {
@@ -62,7 +66,7 @@ Route::middleware(['auth', 'user-access:0'])->group(function () {
     Route::resource('/admin/', AdminController::class);
     Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
     Route::get('/admin/mitra', [AdminController::class, 'mitra'])->name('admin.mitra');
-    Route::get('/admin/mitra/verifikasi/', [AdminController::class, 'edit_verifikasi']);
+    Route::get('/admin/mitra/verifikasi/', [MitraController::class, 'edit_verifikasi']);
     Route::get('/admin/mitra/detail/{id}', [AdminController::class, 'detail_mitra']);
     Route::get('/admin/mitra/produk/{id}', [AdminController::class, 'show_produk']);
     Route::get('/admin/transaksi', [AdminController::class, 'transaksi'])->name('admin.transaksi');

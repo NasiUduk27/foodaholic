@@ -30,9 +30,6 @@ use Illuminate\Support\Facades\Auth;
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('pesanan') ? 'active' : '' }}" href="{{ route('pesanan') }}">Pesanan Saya</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Keranjang Belanja</a>
-                        </li>
                     </ul>
                 </div>
             </nav>
