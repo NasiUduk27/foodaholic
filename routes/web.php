@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/faq', function () {
     return view('faq');
@@ -34,19 +35,19 @@ Auth::routes();
 
 Route::get('/logout', [LoginController::class, 'logout']);
 
-Route::middleware(['auth', 'user-access:1'])->group(function(){
+Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'userHome'])->name('user.home');
-    Route::get('/search',[UserController::class, 'search'])->name('user.search');
-    Route::get('/profile',[ProfileController::class, 'edit'])->name('profile');
+    Route::get('/search', [UserController::class, 'search'])->name('user.search');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
 });
 
-Route::middleware(['auth', 'user-access:2'])->group(function(){
+Route::middleware(['auth', 'user-access:2'])->group(function () {
     Route::get('/mitra/home', [App\Http\Controllers\MitraController::class, 'index'])->name('mitra.home');
     Route::get('/mitra/produk', [App\Http\Controllers\ProdukController::class, 'index']);
     Route::resource('/mitra/produk', ProdukController::class);
 });
 
-Route::middleware(['auth', 'user-access:0'])->group(function(){
+Route::middleware(['auth', 'user-access:0'])->group(function () {
     Route::resource('/admin/', AdminController::class);
     Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
     Route::get('/admin/mitra', [AdminController::class, 'mitra'])->name('admin.mitra');
