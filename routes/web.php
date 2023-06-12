@@ -53,6 +53,8 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::post('/order',[TransaksiController::class, 'store'])->name('user.order');
     Route::post('/checkout',[TransaksiController::class, 'checkout'])->name('user.checkout');
     Route::post('/order',[TransaksiController::class, 'store'])->name('user.order');
+    Route::get('/daftar-mitra', [MitraController::class, 'create'])->name('create_mitra');
+    Route::post('/register-mitra', [MitraController::class, 'store'])->name('register_mitra');
 });
 
 Route::middleware(['auth', 'user-access:2'])->group(function () {
@@ -68,7 +70,7 @@ Route::middleware(['auth', 'user-access:0'])->group(function () {
     Route::resource('/admin/', AdminController::class);
     Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
     Route::get('/admin/mitra', [AdminController::class, 'mitra'])->name('admin.mitra');
-    Route::get('/admin/mitra/verifikasi/', [MitraController::class, 'edit_verifikasi']);
+    Route::post('/admin/mitra/verifikasi/', [MitraController::class, 'edit_verifikasi']);
     Route::get('/admin/mitra/detail/{id}', [AdminController::class, 'detail_mitra']);
     Route::get('/admin/mitra/produk/{id}', [AdminController::class, 'show_produk']);
     Route::get('/admin/transaksi', [AdminController::class, 'transaksi'])->name('admin.transaksi');

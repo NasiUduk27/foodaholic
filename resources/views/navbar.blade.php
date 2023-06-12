@@ -4,8 +4,6 @@ use Illuminate\Support\Facades\Auth;
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-
-
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="/home">
@@ -24,7 +22,10 @@ use Illuminate\Support\Facades\Auth;
                     <a class="nav-link" href="/about_us">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/pesanan">Pesanan Saya</a>
+                    <a class="nav-link" href="{{ url('pesanan') }}">Pesanan Saya</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('daftar-mitra') }}">Daftar Mitra</a>
                 </li>
             </ul>
 
@@ -48,7 +49,7 @@ use Illuminate\Support\Facades\Auth;
                     {{-- <li class="nav-item">
                         <a class="nav-link" href="#">
                             <img src="{{ asset('images/love.png') }}" alt="Love">
-                        </a>
+                    </a>
                     </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('profile') }}">

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Mitra;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class MitraController extends Controller
 {
@@ -26,7 +28,10 @@ class MitraController extends Controller
      */
     public function create()
     {
-        //
+        $dataMitra = DB::table('mitra')
+                    ->where('user_id', auth()->user()->id)
+                    ->get();
+        return view('user.daftar-mitra')->with('dataMitra', $dataMitra);
     }
 
     /**
@@ -37,7 +42,30 @@ class MitraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_mitra' => 'required|string|max:255',
+            'lokasi' => 'required',
+            'detail' => 'required',
+            'no_telp' => 'required|min:10|max:14',
+            'foto' => 'required',
+        ]);
+        
+        $image_name = NULL;
+        
+        if($request->file('foto')){
+            $image_name = $request->file('foto')->store('image', 'public');
+        }
+
+        $mitra = new Mitra;
+        $mitra->user_id = auth()->user()->id;
+        $mitra->nama_mitra = $request->get('nama_mitra');
+        $mitra->foto = $image_name;
+        $mitra->lokasi_bisnis = $request->get('lokasi');
+        $mitra->detail_mitra = $request->get('detail');
+        $mitra->no_telp = $request->get('no_telp');
+        $mitra->save();
+
+        return redirect('/daftar-mitra')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -118,6 +146,10 @@ class MitraController extends Controller
         $mitra = Mitra::find($request->id);
         $mitra->status_verifikasi = $request->status;
         $mitra->save();
+
+        $user = User::find($mitra->user_id);
+        $user->level = 2;
+        $user->save();
         return redirect('/admin/mitra/detail/' . $request->id);
     }
 }
