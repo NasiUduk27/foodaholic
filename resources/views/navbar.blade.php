@@ -4,11 +4,9 @@ use Illuminate\Support\Facades\Auth;
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-
-
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/home">
             <img src="{{ asset('images/logo.png') }}" alt="Logo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -48,8 +46,13 @@ use Illuminate\Support\Facades\Auth;
                             <img src="{{ asset('images/cart.png') }}" alt="Cart">
                         </a>
                     </li>
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <img src="{{ asset('images/love.png') }}" alt="Love">
+                    </a>
+                    </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('profile') }}">
+                        <a class="nav-link" href="{{ url('profile') }}">
                             <img src="{{ asset('images/user.png') }}" alt="User" class="rounded-circle" width="30">
                         </a>
                     </li>

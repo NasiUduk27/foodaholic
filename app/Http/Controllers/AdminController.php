@@ -21,6 +21,8 @@ class AdminController extends Controller
         $user = User::select(DB::raw('count(*) as user'))->whereYear('created_at',date('Y'))
         ->groupBy(DB::raw("Month(created_at)"))
         ->pluck('user');
+        // var_dump($user);
+        // die();
             return view('admin.home', compact('user'));
     }
 

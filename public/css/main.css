@@ -97,3 +97,10 @@ h1{
   gap: 10px;
 }
 
+.col {
+  margin-bottom: 20px;
+}
+
+.col-md-4 {
+  margin-bottom: 20px;
+}
