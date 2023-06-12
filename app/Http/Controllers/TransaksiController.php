@@ -100,9 +100,9 @@ class TransaksiController extends Controller
                     ->join('transaksi_produk', 'transaksi_produk.transaksi_id', '=', 'transaksi.id')
                     ->join('produk', 'produk.id', '=', 'transaksi_produk.produk_id')
                     ->join('mitra', 'mitra.id', '=', 'transaksi.id_mitra')
-                    ->select('users.username', 'produk.nama_produk', 'mitra.nama_mitra', 'transaksi.*, transaksi_produk.*')
+                    ->select('users.username', 'produk.nama_produk', 'mitra.nama_mitra', 'transaksi.*')
                     ->where('transaksi.id_mitra', auth()->user()->id)
-                    ->where('transaksi.updated_at', '!=', null)
+                    ->where('transaksi.status', '!=', '5')
                     ->paginate(5);
         return view('mitra.riwayat_pesanan', ['transaksi' => $transaksi]);
     }

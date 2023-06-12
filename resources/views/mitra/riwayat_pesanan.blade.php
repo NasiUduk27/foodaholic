@@ -64,6 +64,7 @@
                                         @endif
                                     @endforeach
                                 </td>
+                                <td>{{$m->nama_mitra}}</td>
                                 <td>
                                     @if($m->status === '0')
                                         <span class="badge badge-info">Pesanan ditolak</span>
