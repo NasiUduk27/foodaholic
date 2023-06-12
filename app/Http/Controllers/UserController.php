@@ -93,4 +93,17 @@ class UserController extends Controller
 
         return view('user.result', ['produk' => $produk]);
     }
+
+    public function pesanan(){
+        $user = auth()->user();
+        $pesanan = DB::table('transaksi')
+                    ->join('users', 'users.id', '=', 'transaksi.id_user')
+                    ->join('transaksi_produk', 'transaksi_produk.transaksi_id', '=', 'transaksi.id')
+                    ->join('produk', 'produk.id', '=', 'transaksi_produk.produk_id')
+                    ->join('mitra', 'mitra.id', '=', 'transaksi.id_mitra')
+                    ->select('users.username', 'produk.*', 'mitra.nama_mitra', 'transaksi.*', 'transaksi_produk.*')
+                    ->where('transaksi.id_user', auth()->user()->id)
+                    ->paginate(2);
+        return view('user.pesanan', ['pesanan' => $pesanan, 'user' => $user]);
+    }
 }

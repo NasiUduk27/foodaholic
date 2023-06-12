@@ -9,11 +9,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Data Mitra</h1>
+                    <h1>Data User</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Data mitra</li>
+                        <li class="breadcrumb-item active">Data User</li>
                     </ol>
                 </div>
             </div>
@@ -22,9 +22,9 @@
 
     <!-- Main content -->
     <section class="content">
-      <form method="GET" action="{{ route('admin.mitra') }}">
+      <form method="GET" action="{{ route('admin.user') }}">
         <div class="input-group mb-3">
-            <input type="text" name="search" class="form-control" placeholder="Cari Mitra" value="{{ request()->query('search') }}">
+            <input type="text" name="search" class="form-control" placeholder="Cari User" value="{{ request()->query('search') }}">
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="submit">Search</button>
             </div>
@@ -54,37 +54,30 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Mitra</th>
-                            <th>Lokasi</th>
-                            <th>Detail</th>
-                            <th>Status</th>
+                            <th>Nama </th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Alamat</th>
+                            <th>No. HP</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if($mitra->count() > 0)
-                        @foreach($mitra as $i => $m)
+                        @if($user->count() > 0)
+                        @foreach($user as $i => $m)
                         <tr>
-                            <td>{{$i + $mitra->firstItem() }}</td>
-                            <td>{{$m->nama_mitra}}</td>
-                            <td>{{$m->lokasi_bisnis}}</td>
-                            <td>{{$m->detail_mitra}}</td>
+                            <td>{{$i + $user->firstItem() }}</td>
+                            <td>{{$m->name}}</td>
+                            <td>{{$m->username}}</td>
+                            <td>{{$m->email}}</td>
+                            <td>{{$m->alamat}}</td>
+                            <td>{{$m->no_hp}}</td>
                             <td>
-                                @if($m->status_verifikasi == 0)
-                                <span class="badge badge-warning">Belum Diverifikasi</span>
-                                @elseif($m->status_verifikasi == 1)
-                                <span class="badge badge-success">Diterima</span>
-                                @elseif($m->status_verifikasi == 2)
-                                <span class="badge badge-danger">Ditolak</span>
-                                @endif
-                            </td>
-                            <td>
-                                <a href="{{ url('/admin/mitra/produk/'. $m->id) }}" class="btn btn-sm btn-warning">Produk</a>
-                                <a href="{{ url('/admin/mitra/detail/'.$m->id) }}" class="btn btn-sm btn-primary">Detail</a>
-                                <form method="POST" action="{{ url('/admin/mitra/delete'.$m->id) }}">
+                                <a href="{{ url('/admin/user/detail/'.$m->id) }}" class="btn btn-sm btn-primary">Detail</a>
+                                <form method="POST" action="{{ url('admin/user/delete/'.$m->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Apakah anda yakin ingin menghapus data {{ $m->nama_mitra }}?')" class="btn btn-sm btn-danger">Hapus</button>
+                                    <button type="submit" onclick="return confirm('Apakah anda yakin ingin menghapus data {{ $m->name }}?')" class="btn btn-sm btn-danger">Hapus</button>
                                 </form>
                             </td>
                         </tr>
@@ -96,7 +89,7 @@
                         @endif
                     </tbody>
                 </table>
-                {{ $mitra->links() }}
+                {{ $user->links() }}
 
             </div>
             <!-- /.card -->

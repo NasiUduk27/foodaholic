@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TransaksiSeeder extends Seeder
+class Transaksi_ProdukSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,12 +15,10 @@ class TransaksiSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('transaksi')->insert([
-            'id_mitra' => '2',
-            'id_user' => '1',
-            'status' => '1',
-            'total' => '96000',
-            'bayar_type' => 'QR',
+        DB::table('transaksi_produk')->insert([
+            'transaksi_id' => '1',
+            'produk_id' => '2',
+            'qty' => '2',
         ]);
     }
 }

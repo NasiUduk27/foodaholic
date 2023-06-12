@@ -16,7 +16,15 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        //
+        $transaksi = DB::table('transaksi')
+                    ->join('users', 'users.id', '=', 'transaksi.id_user')
+                    ->join('transaksi_produk', 'transaksi_produk.transaksi_id', '=', 'transaksi.id')
+                    ->join('produk', 'produk.id', '=', 'transaksi_produk.produk_id')
+                    ->join('mitra', 'mitra.id', '=', 'transaksi.id_mitra')
+                    ->select('users.username', 'produk.nama_produk', 'mitra.nama_mitra', 'transaksi.*')
+                    ->where('transaksi.id_mitra', auth()->user()->id)
+                    ->paginate(5);
+        return view('mitra.pesanan', ['transaksi' => $transaksi]);
     }
 
     /**
@@ -123,17 +131,5 @@ class TransaksiController extends Controller
         //
     }
 
-    public function checkout(Transaksi $transaksi, Request $request){
-        // $pesanan = $request->all();
-        $pesanan = DB::table('produk')
-                    ->join('mitra', 'produk.id_mitra', '=', 'mitra.id')
-                    ->join('keranjang', 'produk.id', '=', 'keranjang.produk_id')
-                    ->select('produk.*', 'mitra.nama_mitra', 'keranjang.qty')
-                    ->whereIn('produk.id', $request->produk)
-                    ->get();
-                    
-        $pesanan = $pesanan->groupBy('nama_mitra');
-
-        return view('user.checkout', compact('pesanan'));
-    }
+    
 }
