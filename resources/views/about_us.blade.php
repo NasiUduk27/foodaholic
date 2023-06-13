@@ -8,7 +8,7 @@
     <div class="container py-5">
         <div class="row h-100 align-items-center py-5">
             <div class="col-lg-6">
-                <h1 class="display-4">About us page</h1>
+                <h1 class="display-4">Tentang kami</h1>
                 <p class="lead text-muted mb-0">Selamat datang di aplikasi ini! Kami mempersembahkan sebuah solusi yang bertujuan untuk meminimalisir adanya makanan sisa yang terbuang. Aplikasi ini juga memberikan bantuan kepada para pemilik usaha yang ingin meningkatkan penjualan produk mereka tanpa harus mengorbankan biaya produksi yang besar.</p>
                 <p class="lead text-muted">Inspired by <a href="https://www.surplus.id/" class="text-muted">
                         <u>Surplus.id</u></a>

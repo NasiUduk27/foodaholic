@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css/main.css">
 <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
                 
-<div class="container hero-bg">
+<div class="hero-bg">
     <div class="row">
         <div class="col-md-6">
             <h1>Jadilah penyelamat Makanan,</h1>
