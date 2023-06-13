@@ -6,24 +6,24 @@
         <div class="col-md-4">
             <div>
                 <div>
-                    <h5 class = "text-center">Mudah diorder</h5>
-                    <p class = "text-center">Lorem ipsum dolor sit amet consectetur adipiscing elit. Praesent id tristique nulla. Donec nec commodo velit.</p>
+                    <h5 class="text-center">Mudah diorder</h5>
+                    <p class="text-center">"Pesan dengan mudah, rasakan kepraktisan kami!"</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div>
                 <div>
-                    <h5 class = "text-center">Mudah diorder</h5>
-                    <p class = "text-center">Lorem ipsum dolor sit amet consectetur adipiscing elit. Praesent id tristique nulla. Donec nec commodo velit.</p>
+                    <h5 class="text-center">Kualitas Terbaik</h5>
+                    <p class="text-center">"Pilihan Terbaik untuk Menjual dan Membeli Makanan Surplus Berkualitas"</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div>
                 <div>
-                    <h5 class = "text-center">Mudah diorder</h5>
-                    <p class = "text-center">Lorem ipsum dolor sit amet consectetur adipiscing elit. Praesent id tristique nulla. Donec nec commodo velit.</p>
+                    <h5 class="text-center">Rasa Bintang 5 Harga Kaki 5</h5>
+                    <p class="text-center">"Nikmati Rasa Bintang 5 dengan Harga Kaki 5 hanya di FoodaHolic!"</p>
                 </div>
             </div>
         </div>

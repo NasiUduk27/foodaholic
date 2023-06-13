@@ -3,10 +3,21 @@
 <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
 
 <div class="container">
-    <h1 class = "text-center">Best Seller</h1>
-    <p class = "text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, unde et voluptatem consequatur, minus, minima esse debitis quisquam neque incidunt facilis laboriosam nesciunt explicabo asperiores? Enim eum aspernatur iure dolorem.
-    Aliquid veniam, voluptate soluta expedita rem nisi vero. In vitae facilis cupiditate, maiores hic voluptatem assumenda quibusdam id exercitationem dolorum! Doloremque consectetur optio sed, vero exercitationem molestiae minus praesentium impedit?
-    Saepe nobis veniam dolorum ipsum excepturi nulla animi eius optio ad provident porro eaque obcaecati quos enim minus deleniti repudiandae reprehenderit dolor officia, quisquam delectus molestiae! Corrupti enim omnis odio.</p>
+    <h1 class="text-center">Best Seller</h1>
+    <p class="text-center">"Temukan Produk Terlaris Kami: Makanan Berkualitas dengan Harga Terjangkau!"
+    </p>
+    <p class="text-center"></p>
+    Di sini, kami bangga menawarkan koleksi terbaik dari makanan surplus berkualitas yang menjadi favorit pelanggan
+    kami. Dari makanan segar, makanan kaleng, camilan, hingga minuman, kami memiliki berbagai produk yang telah
+    terbukti menjadi pilihan terbaik oleh para pelanggan kami.
+
+    Kami bekerja sama dengan penyedia makanan terpercaya untuk memastikan kualitas yang tak tertandingi. Setiap
+    produk yang kami tawarkan telah melalui proses seleksi ketat untuk memastikan keamanan, kesegaran, dan cita rasa
+    yang luar biasa.
+
+    Tidak hanya itu, harga produk-produk best selling kami juga sangat terjangkau. Kami ingin memastikan bahwa
+    makanan berkualitas tetap dapat diakses oleh semua orang tanpa harus mengorbankan kualitas atau menguras
+    kantong.</p>
     <div class="row">
         <div class="col-md-4">
             <div class="card">
@@ -26,7 +37,7 @@
                             </div>
                         </div>
                     </div>
-            
+
                     <div class="col-md-6">
                         <div class="card-body">
                             <div class="text-center">
@@ -36,9 +47,7 @@
                         </div>
                     </div>
                 </div>
-            </div>            
-        </div>  
+            </div>
+        </div>
     </div>
 </div>
-
-

@@ -58,12 +58,13 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
 });
 
 Route::middleware(['auth', 'user-access:2'])->group(function () {
-    Route::resource('/mitra', MitraController::class);
+    Route::get('/mitra', [MitraController::class, 'index'])->name('mitra.home');
     Route::get('/mitra/produk', [App\Http\Controllers\ProdukController::class, 'index']);
     Route::resource('/mitra/produk', ProdukController::class);
     Route::get('/mitra/pesanan', [TransaksiController::class, 'index']);
     Route::get('/mitra/riwayat-pesanan', [TransaksiController::class, 'riwayat_pesanan']);
     Route::post('/mitra/pesanan/edit-status' , [TransaksiController::class, 'edit_status']);
+    Route::get('/mitra/profile', [MitraController::class, 'index'])->name('mitra.home');
 });
 
 Route::middleware(['auth', 'user-access:0'])->group(function () {

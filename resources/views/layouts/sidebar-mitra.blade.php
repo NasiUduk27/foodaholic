@@ -33,20 +33,12 @@
             </p>
         </a>
     </li>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a href="{{ url('/profile') }}" class="nav-link">
             <i class="nav-icon fas fa-folder"></i>
             <p>
                 Laporan
             </p>
         </a>
-    </li>
-    <li class="nav-item">
-        <a href="{{ url('/mitra/edit') }}" class="nav-link">
-            <i class="nav-icon fas fa-folder"></i>
-            <p>
-                edit
-            </p>
-        </a>
-    </li>
+    </li> -->
 </ul>

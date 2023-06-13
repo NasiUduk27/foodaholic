@@ -51,11 +51,20 @@ use Illuminate\Support\Facades\Auth;
                             <img src="{{ asset('images/love.png') }}" alt="Love">
                     </a>
                     </li> --}}
+                    @if (Auth::check())
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('profile') }}">
                             <img src="{{ asset('images/user.png') }}" alt="User" class="rounded-circle" width="30">
                         </a>
                     </li>
+                    @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('login') }}">
+                            Login
+                        </a>
+                    </li>
+                    @endif
+
                 </ul>
             </div>
         </div>
