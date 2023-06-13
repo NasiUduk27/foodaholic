@@ -8,12 +8,10 @@
     <div class="container py-5">
         <div class="row h-100 align-items-center py-5">
             <div class="col-lg-6">
-                <h1 class="display-4">About us page</h1>
-                <p class="lead text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit amet
-                    illo neque mollitia tempore ipsum vitae at est hic magni laborum, officiis odit vel. Quisquam eos
-                    delectus debitis dolores fuga?</p>
-                <p class="lead text-muted">Inspired by <a href="https://bootstrapious.com/snippets" class="text-muted">
-                        <u>Bootstrapious</u></a>
+                <h1 class="display-4">Tentang kami</h1>
+                <p class="lead text-muted mb-0">Selamat datang di aplikasi ini! Kami mempersembahkan sebuah solusi yang bertujuan untuk meminimalisir adanya makanan sisa yang terbuang. Aplikasi ini juga memberikan bantuan kepada para pemilik usaha yang ingin meningkatkan penjualan produk mereka tanpa harus mengorbankan biaya produksi yang besar.</p>
+                <p class="lead text-muted">Inspired by <a href="https://www.surplus.id/" class="text-muted">
+                        <u>Surplus.id</u></a>
                 </p>
             </div>
             <div class="col-lg-6 d-none d-lg-block"><img src="https://bootstrapious.com/i/snippets/sn-about/illus.png"
@@ -26,10 +24,9 @@
     <div class="container py-5">
         <div class="row align-items-center mb-5">
             <div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
-                <h2 class="font-weight-light">Lorem ipsum dolor sit amet</h2>
-                <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><a href="#"
-                    class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a>
+                <h2 class="font-weight-light">Kamilah yang pertama di Malang</h2>
+                <p class="font-italic text-muted mb-4">Hadir di Kota Malang! Aplikasi kami hadir untuk meminimalisir pemborosan makanan dan memberikan solusi bagi para pemilik usaha di Kota Malang. Dapatkan keuntungan dengan menjual produk Anda lebih banyak lagi tanpa mengorbankan biaya produksi yang besar. Jadilah bagian dari perubahan dan jangkau lebih banyak peluang dengan aplikasi kami di Kota Malang.</p>
+                <a href="/home" class="btn btn-light px-5 rounded-pill shadow-sm">Pelajari Lebih Lanjut</a>
             </div>
             <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img
                     src="https://bootstrapious.com/i/snippets/sn-about/img-1.jpg" alt=""
@@ -39,10 +36,8 @@
             <div class="col-lg-5 px-5 mx-auto"><img src="https://bootstrapious.com/i/snippets/sn-about/img-2.jpg"
                     alt="" class="img-fluid mb-4 mb-lg-0"></div>
             <div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
-                <h2 class="font-weight-light">Lorem ipsum dolor sit amet</h2>
-                <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><a href="#"
-                    class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a>
+                <h2 class="font-weight-light">Temukan banyak diskon</h2>
+                <p>Dapatkan kesempatan emas untuk menemukan banyak diskon di aplikasi kami! Nikmati pengalaman berbelanja yang menyenangkan dengan harga terbaik untuk produk-produk pilihan. Temukan berbagai penawaran menarik dan nikmati keuntungan dengan hemat berbelanja. Ayo bergabung sekarang dan jadilah bagian dari komunitas pelanggan yang cerdas dalam memanfaatkan diskon-diskon menarik kami!</p>
             </div>
         </div>
     </div>
@@ -52,8 +47,8 @@
     <div class="container py-5">
         <div class="row mb-4">
             <div class="col-lg-5">
-                <h2 class="display-4 font-weight-light">Our team</h2>
-                <p class="font-italic text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <h2 class="display-4 font-weight-light">Tim foodaholic</h2>
+                <p class="font-italic text-muted">Kami dari kelompok 10</p>
             </div>
         </div>
 
@@ -62,7 +57,7 @@
                 <!-- Team item 1 -->
                 <div class="col-xl-3 col-sm-6 mb-5">
                     <div class="bg-white rounded shadow-sm py-5 px-4">
-                        <img src="https://bootstrapious.com/i/snippets/sn-about/avatar-2.png" alt=""
+                        <img src="https://bootstrapious.com/i/snippets/sn-about/avatar-1.png" alt=""
                             width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                         <h5 class="mb-0">Dhoriffito Diansyah Putra</h5>
                         <span class="small text-uppercase text-muted">Project Manager</span>
@@ -104,7 +99,7 @@
                 <!-- Team item 3 -->
                 <div class="col-xl-3 col-sm-6 mb-5">
                     <div class="bg-white rounded shadow-sm py-5 px-4">
-                        <img src="https://bootstrapious.com/i/snippets/sn-about/avatar-2.png" alt=""
+                        <img src="https://bootstrapious.com/i/snippets/sn-about/avatar-3.png" alt=""
                             width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                         <h5 class="mb-0">Alfino Febry Krissaputra</h5>
                         <span class="small text-uppercase text-muted">Backend-Developer</span>

@@ -2,9 +2,10 @@
 use Illuminate\Support\Facades\Auth;
 @endphp
 
+<link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-<div class="container">
+<div>
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="/home">
             <img src="{{ asset('images/logo.png') }}" alt="Logo">
