@@ -57,7 +57,8 @@
                             <th>No</th>
                             <th>Nama Mitra</th>
                             <th>Lokasi</th>
-                            <th>Detail</th>
+                            <th>Nama Lengkap Pemilik</th>
+                            <th>Nomor Telp.</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -69,7 +70,8 @@
                             <td>{{$i + $mitra->firstItem() }}</td>
                             <td>{{$m->nama_mitra}}</td>
                             <td>{{$m->lokasi_bisnis}}</td>
-                            <td>{{$m->detail_mitra}}</td>
+                            <td>{{$m->name}}</td>
+                            <td>{{$m->no_telp}}</td>
                             <td>
                                 @if($m->status_verifikasi == 0)
                                 <span class="badge badge-warning">Belum Diverifikasi</span>

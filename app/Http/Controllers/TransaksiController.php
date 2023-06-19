@@ -68,7 +68,7 @@ class TransaksiController extends Controller
                                 'status' => 1,
                                 'total' => $total,
                                 'created_at' => \Carbon\Carbon::now(),
-                                'updated_at' => \Carbon\Carbon::now(),
+                                'updated_at' => \Ca rbon\Carbon::now(),
                             ]
                         );
             foreach($p as $i => $k){

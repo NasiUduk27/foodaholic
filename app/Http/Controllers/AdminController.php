@@ -96,9 +96,17 @@ class AdminController extends Controller
     {
         $search = $request->query('search');
 
-        $mitra = Mitra::where('nama_mitra', 'LIKE', "%{$search}%")
-            ->orderBy('id', 'DESC')
-            ->paginate(10)->withQueryString();
+        $mitra = DB::table('mitra')
+                    ->join('users', 'users.id', '=', 'mitra.user_id')
+                    ->where('nama_mitra', 'LIKE', '%'.$search.'%')
+                    ->paginate(10);
+
+        // $mitra = Mitra::where('nama_mitra', 'LIKE', "%{$search}%")
+        //     ->orderBy('id', 'DESC')
+        //     ->paginate(10)->withQueryString();
+
+        // var_dump($mitra);
+        // die();
 
         return view('admin.mitra', compact('mitra'));
     }
