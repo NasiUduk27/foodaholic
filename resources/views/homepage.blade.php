@@ -8,6 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HomePage</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+    .main-content {
+        min-height: calc(100vh - 155px - 152px);
+    }
+    </style>
 </head>
 
 <body>

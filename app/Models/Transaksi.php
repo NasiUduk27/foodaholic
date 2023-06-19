@@ -17,6 +17,8 @@ class Transaksi extends Model
         'total',
         'bayar',
         'bayar_type',
+        'created_at',
+        'updated_at',
     ];
 
     public function mitra(){

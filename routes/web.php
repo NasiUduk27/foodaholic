@@ -51,8 +51,6 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::post('/pesanan/edit-status' , [TransaksiController::class, 'edit_status']);
     Route::post('/checkout',[TransaksiController::class, 'checkout'])->name('user.checkout');
     Route::post('/order',[TransaksiController::class, 'store'])->name('user.order');
-    Route::post('/checkout',[TransaksiController::class, 'checkout'])->name('user.checkout');
-    Route::post('/order',[TransaksiController::class, 'store'])->name('user.order');
     Route::get('/daftar-mitra', [MitraController::class, 'create'])->name('create_mitra');
     Route::post('/register-mitra', [MitraController::class, 'store'])->name('register_mitra');
 });
@@ -64,7 +62,7 @@ Route::middleware(['auth', 'user-access:2'])->group(function () {
     Route::get('/mitra/pesanan', [TransaksiController::class, 'index']);
     Route::get('/mitra/riwayat-pesanan', [TransaksiController::class, 'riwayat_pesanan']);
     Route::post('/mitra/pesanan/edit-status' , [TransaksiController::class, 'edit_status']);
-    Route::get('/mitra/profile', [MitraController::class, 'index'])->name('mitra.home');
+    Route::get('/mitra/profile', [MitraController::class, 'index']);
 });
 
 Route::middleware(['auth', 'user-access:0'])->group(function () {

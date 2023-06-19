@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
+use DateTime;
 use Doctrine\DBAL\Schema\ForeignKeyConstraint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -65,7 +66,9 @@ class TransaksiController extends Controller
                                 'id_mitra' => $k->mitra_id,
                                 'id_user' => auth()->user()->id,
                                 'status' => 1,
-                                'total' => $total
+                                'total' => $total,
+                                'created_at' => \Carbon\Carbon::now(),
+                                'updated_at' => \Carbon\Carbon::now(),
                             ]
                         );
             foreach($p as $i => $k){
@@ -161,6 +164,20 @@ class TransaksiController extends Controller
             return redirect('/pesanan');
         }
         
+    }
+
+    public function checkout(Transaksi $transaksi, Request $request){
+        // $pesanan = $request->all();
+        $pesanan = DB::table('produk')
+                    ->join('mitra', 'produk.id_mitra', '=', 'mitra.id')
+                    ->join('keranjang', 'produk.id', '=', 'keranjang.produk_id')
+                    ->select('produk.*', 'mitra.nama_mitra', 'keranjang.qty')
+                    ->whereIn('produk.id', $request->produk)
+                    ->get();
+
+        $pesanan = $pesanan->groupBy('nama_mitra');
+
+        return view('user.checkout', compact('pesanan'));
     }
     
 }
