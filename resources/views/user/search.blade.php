@@ -3,7 +3,7 @@
 <script src="https://kit.fontawesome.com/d4cdca322c.js" crossorigin="anonymous"></script>
 
 <div class="container">
-    <form action="{{ url('/search') }}" method="GET" class="d-flex" role="search">
+    <form action="{{ url('/search') }}" method="GET" class="d-flex mb-4" role="search">
         <div class="input-group">
             <input type="text" class="form-control search-user" name="produk" placeholder="Cari menu makanan..."
                 aria-label="Search" aria-describedby="searchButton">

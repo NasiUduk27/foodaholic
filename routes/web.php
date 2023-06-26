@@ -47,6 +47,7 @@ Route::middleware(['auth', 'user-access:1'])->group(function () {
     Route::resource('/profile', ProfileController::class);
     Route::get('/keranjang/',[KeranjangController::class, 'index'])->name('user.keranjang');
     Route::post('/keranjang/add',[KeranjangController::class, 'add_keranjang'])->name('user.add_keranjang');
+    Route::post('/keranjang/delete',[KeranjangController::class, 'delete_keranjang'])->name('user.delete_keranjang');
     Route::get('/pesanan', [UserController::class, 'pesanan'])->name('pesanan');
     Route::post('/pesanan/edit-status' , [TransaksiController::class, 'edit_status']);
     Route::post('/checkout',[TransaksiController::class, 'checkout'])->name('user.checkout');

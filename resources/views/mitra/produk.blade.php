@@ -78,9 +78,6 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger mx-2">Delete</button>
                                 </form>
-
-                                <a href="{{ url('/mitra/produk/detail-nilai/'. $p->id) }}"
-                                    class="btn btn-sm btn-warning mx-2">Nilai</a>
                             </td>
                         </tr>
                         @endforeach

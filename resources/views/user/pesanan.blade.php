@@ -24,7 +24,7 @@
         <tbody>
             <tr>
                 <td>{{ $p->nama_mitra }}</td>
-                <td><img src="{{ asset('images/' . $p->foto_produk) }}" alt="Image" style="width: 72px;"></td>
+                <td><img src="{{ asset('storage/' . $p->foto_produk) }}" alt="Image" style="width: 72px;"></td>
                 <td>{{ $item->nama_produk }}</td>
                 <td>{{ $item->qty }}</td>
                 <td>Rp. {{ $item->harga }}</td>

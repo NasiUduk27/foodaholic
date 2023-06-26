@@ -63,6 +63,7 @@ $(document).ready(function() {
             method: "POST",
             data: $(this).serialize(),
             success: function(data) {
+                alert('Selamat, menu berhasil ditambahkan ke keranjang!')
                 console.log(data);
             }
         });

@@ -9,13 +9,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Edit Datak</h1>
+                    <h1>Detail Produk</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ url('/mitra/') }}">Home</a></li>
                         <li class="breadcrumb-item"><a href="{{ url('/mitra/produk') }}">Produk</a></li>
-                        <li class="breadcrumb-item active">Tambah Produk</li>
+                        <li class="breadcrumb-item active">Detail Produk</li>
                     </ol>
                 </div>
             </div>
@@ -54,7 +54,8 @@
                     <div class="form-group">
                         <label>Lokasi Bisnis</label>
                         <input class="form-control @error('lokasi_bisnis') is-invalid @enderror"
-                            value="{{ isset($mitra)? $mitra->lokasi_bisnis : old('lokasi_bisnis') }}" name="lokasi_bisnis" type="text">
+                            value="{{ isset($mitra)? $mitra->lokasi_bisnis : old('lokasi_bisnis') }}"
+                            name="lokasi_bisnis" type="text">
                         @error('lokasi_bisnis')
                         <span class="error invalid-feedback">{{ $message }}</span>
                         @enderror
@@ -62,7 +63,8 @@
                     <div class="form-group">
                         <label>Detail</label>
                         <input class="form-control @error('detail_mitra') is-invalid @enderror"
-                            value="{{ isset($mitra) ? $mitra->detail_mitra : old('detail_mitra') }}" name="detail_mitra" type="text">
+                            value="{{ isset($mitra) ? $mitra->detail_mitra : old('detail_mitra') }}" name="detail_mitra"
+                            type="text">
                         @error('detail_mitra')
                         <span class="error invalid-feedback">{{ $message }}</span>
                         @enderror

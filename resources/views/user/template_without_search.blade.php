@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title ?? 'Homepage User' }}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{asset('css/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{asset('css/card_food.css')}}">
     <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
 
@@ -30,6 +30,7 @@
 
     @include('footer')
     <script src="{{ asset('assets/plugins/jquery/jquery.min.js' )}}"></script>
+    @stack('custom_js')
 </body>
 
 </html>
