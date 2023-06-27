@@ -24,48 +24,26 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Online Store Visitors</h3>
-                  <a href="javascript:void(0);">View Report</a>
+    <!-- Default box -->
+    <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Hallo</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
-              </div>
-              <div class="card-body">
-                <script>
-                  var user=<?php echo json_encode($user) ?>;
-                  console.log(Highcharts)
-                  Highcharts.chart('container',{
-                    title:{
-                      text:'User'
-                    },
-                    xAxis:{
-                      categories:['May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
-                    },
-                    yAxis:{
-                      title:{
-                        text:'Number of User'
-                      }
-                    },
-                    series:[{
-                      name:'User',
-                      data:user
-                    }]
-                  });
-                </script>
-                
-              </div>
             </div>
-            <!-- /.card -->
-          </div>
+            <div class="card-body">
+                Selamat Datang Admin
+            </div>
+            <!-- /.card-body -->
         </div>
-      </div>
-      <!-- /.container-fluid -->
-    </div>
+        <!-- /.card -->
     <!-- /.content -->
     
   </div>
