@@ -82,7 +82,7 @@
                             <td>{{$m->nama_produk}}</td>
                             <td>{{$m->nama_mitra}}</td>
                             <td>{{$m->status}}</td>
-                            <td>{{$m->nominal}}</td>
+                            <td>{{$m->total}}</td>
                             <td>{{$m->created_at}}</td>
                             <td>{{$m->updated_at}}</td>
                         </tr>

@@ -20,7 +20,7 @@ class TransaksiSeeder extends Seeder
             'id_user' => '1',
             'status' => '1',
             'total' => '96000',
-            'bayar_type' => 'QR',
+            'bayar_type' => 'Q',
         ]);
     }
 }
