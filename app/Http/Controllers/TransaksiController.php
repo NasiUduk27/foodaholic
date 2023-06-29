@@ -58,6 +58,13 @@ class TransaksiController extends Controller
                 ->get();
         $produk = $produk->groupBy('nama_mitra');
         
+        foreach ($produk as $mitra => $items) {
+            foreach ($items as $item) {
+                $qty = $request->input('qty_' . $item->id);
+                $item->qty = $qty;
+            }
+        }
+
         foreach($produk as $k => $p){
             foreach($p as $i => $k){
                 $harga = DB::table('produk')->where('id', $k->id)->first()->harga;

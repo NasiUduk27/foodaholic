@@ -26,7 +26,17 @@
                             src="{{ asset('storage/'.$k->foto_produk)}}"></td>
                     <td>{{$k->nama_produk}}</td>
                     <td>Rp. {{$k->harga}},00</td>
-                    <td class="p-5">{{$k->qty}}</td>
+                    <td class="cart-product-quantity" width="130px">
+                        <div class="input-group quantity">
+                            <div class="input-group-prepend decrement-btn" style="cursor: pointer">
+                                <span class="input-group-text">-</span>
+                            </div>
+                            <input type="text" name="qty_{{ $k->id }}" class="qty-input form-control" maxlength="2" max="{{ $k->stok }}" value="{{$k->qty}}">
+                            <div class="input-group-append increment-btn" style="cursor: pointer; margin-right:100px">
+                                <span class="input-group-text">+</span>
+                            </div>
+                        </div>
+                    </td>
                     <?php
                         $total += $k->harga * $k->qty;
                     ?>
@@ -48,3 +58,33 @@
     @endif
 </div>
 @endsection
+
+@push('custom_js')
+<script>
+     $(document).ready(function () {
+        $('.increment-btn').click(function (e) {
+            e.preventDefault();
+            var incre_value = $(this).parents('.quantity').find('.qty-input').val();
+            var value = parseInt(incre_value, 10);
+            value = isNaN(value) ? 0 : value;
+            if(value<10){
+                value++;
+                $(this).parents('.quantity').find('.qty-input').val(value);
+            }
+
+        });
+
+        $('.decrement-btn').click(function (e) {
+            e.preventDefault();
+            var decre_value = $(this).parents('.quantity').find('.qty-input').val();
+            var value = parseInt(decre_value, 10);
+            value = isNaN(value) ? 0 : value;
+            if(value>1){
+                value--;
+                $(this).parents('.quantity').find('.qty-input').val(value);
+            }
+        });
+
+        });
+</script>
+@endpush

@@ -36,6 +36,7 @@
                                         <img src="{{asset('storage/' . $p->foto_produk)}}" class="card-img"
                                             alt="Food Image 1">
                                         @if($p->stok > 0)
+                                        <p style="color: red; margin-bottom:auto; margin-top:20px">Sisa {{$p->stok}} stok</p>
                                         <button type="submit" class="btn btn-secondary mt-4">+ Keranjang</button>
                                         @else
                                         <button disabled class="btn btn-secondary mt-4">Stok Habis</button>
