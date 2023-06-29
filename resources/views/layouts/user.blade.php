@@ -20,15 +20,16 @@ use Illuminate\Support\Facades\Auth;
             <p>No. Hp : {{$user->no_hp}}</p>
         </div>
         <div class="card col-sm-8 shadow">
-            <nav class="navbar navbar-expand-lg navbar-light">
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('profile') ? 'active' : '' }}"
+                            <a class="pl-0 nav-link {{ Request::is('profile') ? 'active' : '' }}"
                                 href="{{ url('profile') }}">Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('pesanan') ? 'active' : '' }}" href="{{ route('pesanan') }}">Pesanan Saya</a>
+                            <a class="nav-link {{ Request::is('pesanan') ? 'active' : '' }}"
+                                href="{{ route('pesanan') }}">Pesanan Saya</a>
                         </li>
                     </ul>
                 </div>

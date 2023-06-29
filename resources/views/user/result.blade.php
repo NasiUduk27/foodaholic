@@ -35,7 +35,11 @@
                                         <input type="hidden" name="produk_id" value="{{$p->id}}">
                                         <img src="{{asset('storage/' . $p->foto_produk)}}" class="card-img"
                                             alt="Food Image 1">
+                                        @if($p->stok > 0)
                                         <button type="submit" class="btn btn-secondary mt-4">+ Keranjang</button>
+                                        @else
+                                        <button disabled class="btn btn-secondary mt-4">Stok Habis</button>
+                                        @endif
                                     </form>
                                 </div>
                             </div>
@@ -63,8 +67,12 @@ $(document).ready(function() {
             method: "POST",
             data: $(this).serialize(),
             success: function(data) {
-                alert('Selamat, menu berhasil ditambahkan ke keranjang!')
-                console.log(data);
+                if (data['data'] === 'Stok Habis') {
+                    alert('Mohon Maaf, Stok sudah habis')
+                } else {
+                    alert('Selamat, menu berhasil ditambahkan ke keranjang!')
+                }
+                console.log(data['data']);
             }
         });
     });

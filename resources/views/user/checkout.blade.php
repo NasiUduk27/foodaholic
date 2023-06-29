@@ -2,7 +2,7 @@
 @section('content')
 <div class="container mt-5 mb-5">
     @if($pesanan->count() > 0)
-    <form method="POST" action="{{ url('checkout') }}" clas>
+    <form method="POST" action="{{ url('order') }}">
         @csrf
         <?php
             $total = 0;
@@ -20,6 +20,8 @@
                 </thead>
                 @foreach($p as $i => $k)
                 <tr class="">
+                    <input type="hidden" name="produk[]" value="{{ $k->id }}" id="produk_{{ $k->id }}">
+                    <input type="hidden" name="qty[]" value="{{ $k->qty }}" id="{{ $k->qty }}">
                     <td><img width="100px" height="100px" class="mt-3 mb-3 image-cover-menu"
                             src="{{ asset('storage/'.$k->foto_produk)}}"></td>
                     <td>{{$k->nama_produk}}</td>
@@ -36,7 +38,7 @@
         <div class="d-flex mb-3">
             <div class="ml-auto mt-4 mb-3">
                 <p>Total : {{ $total }}</p>
-                <button class="button ml-auto btn btn-primary rounded mt-0 mb-3" type="submit">Checkout</button>
+                <button class="button ml-auto btn btn-primary rounded mt-0 mb-3" type="submit">Pesan</button>
             </div>
         </div>
     </form>

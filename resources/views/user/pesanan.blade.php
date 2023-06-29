@@ -24,25 +24,25 @@
         <tbody>
             <tr>
                 <td>{{ $p->nama_mitra }}</td>
-                <td><img src="{{ asset('storage/' . $p->foto_produk) }}" alt="Image" style="width: 72px;"></td>
+                <td><img src="{{ asset('storage/' . $item->foto_produk) }}" alt="Image" style="width: 72px;"></td>
                 <td>{{ $item->nama_produk }}</td>
                 <td>{{ $item->qty }}</td>
                 <td>Rp. {{ $item->harga }}</td>
                 <td>Rp. {{ $item->harga * $item->qty }}</td>
                 <td>
-                    @if ($p->status === '0')
+                    @if ($item->status === '0')
                     <span class="badge badge-info">Pesanan Ditolak</span>
-                    @elseif($p->status === '1')
+                    @elseif($item->status === '1')
                     <span class="badge badge-warning">Menunggu Konfirmasi</span>
-                    @elseif($p->status === '2')
+                    @elseif($item->status === '2')
                     <span class="badge badge-success">Pesanan Diterima</span>
-                    @elseif($p->status === '3')
+                    @elseif($item->status === '3')
                     <span class="badge badge-danger">Pesanan Siap</span>
-                    @elseif($p->status === '4')
+                    @elseif($item->status === '4')
                     <span class="badge badge-primary">Pesanan Selesai(user)</span>
-                    @elseif($p->status === '5')
+                    @elseif($item->status === '5')
                     <span class="badge badge-danger">Pesanan Selesai</span>
-                    @elseif($p->status === '6')
+                    @elseif($item->status === '6')
                     <span class="badge badge-danger">Pesanan dibatalkan</span>
                     @endif
                     </>

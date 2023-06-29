@@ -103,26 +103,36 @@ class KeranjangController extends Controller
             'produk_id' => 'required',
         ]);
 
-        if(Keranjang::where('user_id', $request->user_id)->where('produk_id', $request->produk_id)->exists()){
-            $keranjang = Keranjang::where('user_id', $request->user_id)->where('produk_id', $request->produk_id)->first();
-            $keranjang->qty = $keranjang->qty + 1;
-            $keranjang->save();
-            $update_stok = DB::table('produk')->where('id', $request->produk_id)->update(['stok' => DB::raw('GREATEST(stok - 1, 0)')]);
+        // $produk = Produk::where('id', $request->produk_id)->get();
+
+        $stok = DB::table('produk')->where('id', $request->produk_id)->select('stok')->first();
+        $stok = $stok->stok;
+        if($stok > 0){
+            if(Keranjang::where('user_id', $request->user_id)->where('produk_id', $request->produk_id)->exists()){
+                $keranjang = Keranjang::where('user_id', $request->user_id)->where('produk_id', $request->produk_id)->first();
+                $keranjang->qty = $keranjang->qty + 1;
+                $keranjang->save();
+                $update_stok = DB::table('produk')->where('id', $request->produk_id)->update(['stok' => DB::raw('GREATEST(stok - 1, 0)')]);
+                return response()->json([
+                    'data' => $keranjang,
+                ]);
+            }
+
+            $keranjang = Keranjang::create([
+                'user_id' => $request->user_id,
+                'produk_id' => $request->produk_id,
+                'qty' => 1,
+            ]);
+            $update_stok = DB::table('produk')->where('id', $request->produk_id)->update(['stok' => 1]);
+
             return response()->json([
                 'data' => $keranjang,
             ]);
+        }else{
+            return response()->json([
+                'data' => 'Stok Habis',
+            ]);
         }
-
-        $keranjang = Keranjang::create([
-            'user_id' => $request->user_id,
-            'produk_id' => $request->produk_id,
-            'qty' => 1,
-        ]);
-        $update_stok = DB::table('produk')->where('id', $request->produk_id)->update(['stok' => 1]);
-
-        return response()->json([
-            'data' => $keranjang,
-        ]);
     }
 
     public function delete_keranjang(Request $request){
