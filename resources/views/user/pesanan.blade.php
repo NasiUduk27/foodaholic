@@ -31,15 +31,15 @@
                 <td>Rp. {{ $item->harga * $item->qty }}</td>
                 <td>
                     @if ($item->status === '0')
-                    <span class="badge badge-info">Pesanan Ditolak</span>
+                    <span class="badge badge-danger">Pesanan Ditolak</span>
                     @elseif($item->status === '1')
                     <span class="badge badge-warning">Menunggu Konfirmasi</span>
                     @elseif($item->status === '2')
                     <span class="badge badge-success">Pesanan Diterima</span>
                     @elseif($item->status === '3')
-                    <span class="badge badge-danger">Pesanan Siap</span>
+                    <span class="badge badge-info">Pesanan Siap</span>
                     @elseif($item->status === '4')
-                    <span class="badge badge-primary">Pesanan Selesai(user)</span>
+                    <span class="badge badge-success">Pesanan Selesai(user)</span>
                     @elseif($item->status === '5')
                     <span class="badge badge-danger">Pesanan Selesai</span>
                     @elseif($item->status === '6')
