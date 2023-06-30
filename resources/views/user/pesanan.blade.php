@@ -38,6 +38,13 @@
                     <span class="badge badge-success">Pesanan Diterima</span>
                     @elseif($item->status === '3')
                     <span class="badge badge-info">Pesanan Siap</span>
+                    <form action="{{ url('/pesanan/edit-status') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $p->id }}">
+                        <input type="hidden" name="status" value="4">
+                        <button type="submit" class="btn btn-primary h-75 text-center"
+                            style="width: 90%">Selesai</button>
+                    </form>
                     @elseif($item->status === '4')
                     <span class="badge badge-success">Pesanan Selesai(user)</span>
                     @elseif($item->status === '5')
@@ -45,37 +52,15 @@
                     @elseif($item->status === '6')
                     <span class="badge badge-danger">Pesanan dibatalkan</span>
                     @endif
-                    </>
+                    @if($item->status === '3 ')
+
+                    @endif
                 </td>
             </tr>
         </tbody>
     </table>
     @endif
     @endforeach
-    {{-- @if ($p->status === '0')
-                        <span class="badge badge-info">Pesanan Ditolak</span>
-                    @elseif($p->status === '1')
-                        <span class="badge badge-warning">Menunggu Konfirmasi</span>
-                    @elseif($p->status === '2')
-                        <span class="badge badge-success">Pesanan Diterima</span>
-                    @elseif($p->status === '3')
-                        <span class="badge badge-danger">Pesanan Siap</span>
-                    @elseif($p->status === '4')
-                        <span class="badge badge-primary">Pesanan Selesai(user)</span>
-                    @elseif($p->status === '5')
-                        <span class="badge badge-danger">Pesanan Selesai</span>
-                    @elseif($p->status === '6')
-                        <span class="badge badge-danger">Pesanan dibatalkan</span>
-                    @endif</> --}}
-
-    @if ($p->status === '3 ')
-    <form action="{{ url('/pesanan/edit-status') }}" method="POST" style="display: inline;">
-        @csrf
-        <input type="hidden" name="id" value="{{ $p->id }}">
-        <input type="hidden" name="status" value="4">
-        <button type="submit" class="btn btn-primary">Selesai</button>
-    </form>
-    @endif
 </div>
 @endif
 @endforeach

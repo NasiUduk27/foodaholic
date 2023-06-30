@@ -35,10 +35,9 @@ use Illuminate\Support\Facades\Auth;
             <div class="ml-auto">
                 <ul class="navbar-nav">
                     @if (Auth::check())
-                    <li class="nav-item">562
-                        \0 
+                    <li class="nav-item">
                         <div class="">
-                            
+
                         </div>
                         <a class="nav-link text-danger" href="/logout">
                             Logout

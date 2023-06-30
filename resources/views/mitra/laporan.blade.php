@@ -66,12 +66,14 @@
                             $total = 0;
                             ?>
                             @foreach($laporan as $i => $p)
-                            <?php
-                                $total += $p->total;
-                            ?>
-                            <td class="p-2">{{$p->name}}</td>
-                            <td class="p-2">{{$p->created_at}}</td>
-                            <td class="p-2">{{$p->total}}</td>
+                            <tr>
+                                <?php
+                                    $total += $p->total;
+                                ?>
+                                <td class="p-2">{{$p->name}}</td>
+                                <td class="p-2">{{$p->created_at}}</td>
+                                <td class="p-2">Rp. {{$p->total}},00</td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -85,13 +87,12 @@
                         <tbody>
                             <td></td>
                             <td class="p-2">Total Pendapatan :</td>
-                            <td class="p-2"> {{ $total }}</td>
+                            <td class="p-2">Rp. {{ $total }},00</td>
                         </tbody>
                     </table>
                     <hr>
                     <form action="{{ url('/mitra/laporan/cetak') }}" method="POST">
                         @csrf
-                        <p>{{$tanggal_akhir}}</p>
                         <input type="hidden" value="{{ $tanggal_awal }}" name="awal">
                         <input type="hidden" value="{{ $tanggal_akhir }}" name="akhir">
                         <button type="submit" class="w-100 mb-4 btn btn-success">

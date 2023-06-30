@@ -13,12 +13,14 @@
                             $total = 0;
                             ?>
         @foreach($laporan as $i => $p)
-        <?php
-                                $total += $p->total;
-                            ?>
-        <td class="p-2">{{$p->name}}</td>
-        <td class="p-2">{{$p->created_at}}</td>
-        <td class="p-2">{{$p->total}}</td>
+        <tr>
+            <?php
+                                    $total += $p->total;
+                                ?>
+            <td class="p-2">{{$p->name}}</td>
+            <td class="p-2">{{$p->created_at}}</td>
+            <td class="p-2">Rp. {{$p->total}},00</td>
+        </tr>
         @endforeach
     </tbody>
 </table>
@@ -32,7 +34,7 @@
     <tbody>
         <td></td>
         <td class="p-2">Total Pendapatan :</td>
-        <td class="p-2"> {{ $total }}</td>
+        <td class="p-2">Rp. {{ $total }},00</td>
     </tbody>
 </table>
 <hr>
