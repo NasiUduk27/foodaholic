@@ -191,19 +191,21 @@ class TransaksiController extends Controller
         return view('user.checkout', compact('pesanan'));
     }
     
-    public function cetak_laporan($id){
-        $transaksi = DB::table('transaksi')
-                    ->join('users', 'users.id', '=', 'transaksi.id_user')
-                    ->join('transaksi_produk', 'transaksi_produk.transaksi_id', '=', 'transaksi.id')
-                    ->join('produk', 'produk.id', '=', 'transaksi_produk.produk_id')
-                    ->join('mitra', 'mitra.id', '=', 'transaksi.id_mitra')
-                    ->select('users.username', 'produk.nama_produk', 'mitra.nama_mitra', 'transaksi.*')
-                    ->where('transaksi.id_mitra', auth()->user()->id)
-                    ->where('transaksi.status', '=', '5')
-                    ->orWhere('transaksi.status', '=', '6')
-                    ->get();
+    public function cetak_laporan(Request $request){
+        $request->validate([
+            'awal' => 'required',
+            'akhir' => 'required',
+        ]);
+        $laporan = DB::table('transaksi')
+                                        ->join('users', 'users.id', '=', 'transaksi.id_user')
+                                        ->select('transaksi.*', 'users.name')
+                                        ->where('id_mitra', auth()->user()->id)
+                                        ->where('status', '5')
+                                        ->whereDate('transaksi.created_at', '>=', $request->awal)
+                                        ->whereDate('transaksi.created_at', '<=', $request->akhir)
+                                        ->get();
                     
-        $pdf = Pdf::loadview('mitra.transaksi_pdf', ['transaksi'=>$transaksi]);
+        $pdf = Pdf::loadview('mitra.laporan_pdf', ['laporan'=>$laporan, 'tanggal_awal'=>$request->awal, 'tanggal_akhir'=>$request->akhir]);
         return $pdf->stream();
     }
 }

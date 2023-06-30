@@ -64,7 +64,9 @@ Route::middleware(['auth', 'user-access:2'])->group(function () {
     Route::get('/mitra/riwayat-pesanan', [TransaksiController::class, 'riwayat_pesanan']);
     Route::post('/mitra/pesanan/edit-status' , [TransaksiController::class, 'edit_status']);
     Route::get('/mitra/profile', [MitraController::class, 'index']);
-    Route::get('/mitra/riwayat-pesanan/{id}/cetak', [App\Http\Controllers\TransaksiController::class, 'cetak_laporan']);
+    Route::get('/mitra/laporan', [App\Http\Controllers\MitraController::class, 'view_laporan']);
+    Route::post('/mitra/laporan', [App\Http\Controllers\MitraController::class, 'update_laporan']);
+    Route::post('/mitra/laporan/cetak', [App\Http\Controllers\TransaksiController::class, 'cetak_laporan']);
 });
 
 Route::middleware(['auth', 'user-access:0'])->group(function () {

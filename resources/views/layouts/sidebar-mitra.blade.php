@@ -33,12 +33,12 @@
             </p>
         </a>
     </li>
-    <!-- <li class="nav-item">
-        <a href="{{ url('/profile') }}" class="nav-link">
+    <li class="nav-item">
+        <a href="{{ url('/mitra/laporan') }}" class="nav-link">
             <i class="nav-icon fas fa-folder"></i>
             <p>
                 Laporan
             </p>
         </a>
-    </li> -->
+    </li>
 </ul>

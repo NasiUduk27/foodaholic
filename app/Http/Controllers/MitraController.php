@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Mitra;
 use App\Models\User;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -152,4 +153,34 @@ class MitraController extends Controller
         $user->save();
         return redirect('/admin/mitra/detail/' . $request->id);
     }
+
+    public function view_laporan(){
+        $laporan = DB::table('transaksi')
+                                        ->join('users', 'users.id', '=', 'transaksi.id_user')
+                                        ->select('transaksi.*', 'users.name')
+                                        ->where('id_mitra', auth()->user()->id)
+                                        ->where('status', '10')
+                                        ->get();
+        return view('mitra.laporan')->with('laporan', $laporan);
+    }   
+
+    public function update_laporan(Request $request){
+        $request->validate([
+            'tgl_awal' => 'required',
+            'tgl_akhir' => 'required',
+        ]);
+        $tanggal_awal_str = str_replace('/', '-', $request->tgl_awal);
+        $tanggal_awal = DateTime::createFromFormat('m-d-Y', $tanggal_awal_str)->format('Y-m-d');
+        $tanggal_akhir_str = str_replace('/', '-', $request->tgl_akhir);
+        $tanggal_akhir = DateTime::createFromFormat('m-d-Y', $tanggal_akhir_str)->format('Y-m-d');
+        $laporan = DB::table('transaksi')
+                                        ->join('users', 'users.id', '=', 'transaksi.id_user')
+                                        ->select('transaksi.*', 'users.name')
+                                        ->where('id_mitra', auth()->user()->id)
+                                        ->where('status', '5')
+                                        ->whereDate('transaksi.created_at', '>=', $tanggal_awal)
+                                        ->whereDate('transaksi.created_at', '<=', $tanggal_akhir)
+                                        ->get();
+        return view('mitra.laporan', compact(['laporan', 'tanggal_awal', 'tanggal_akhir']));
+    }   
 }

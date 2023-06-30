@@ -55,67 +55,71 @@
                         @if($transaksi->count() > 0)
                         @foreach($transaksi as $key => $m)
                         @if($key === 0 || $m->id !== $transaksi[$key - 1]->id)
-                            <tr>
-                                <td>{{$m->username}}</td>
-                                <td>
-                                    @foreach($transaksi as $item)
-                                        @if($item->username === $m->username)
-                                            {{$item->nama_produk}},<br>
-                                        @endif
-                                    @endforeach
-                                </td>
-                                <td>
-                                    @if($m->status === '0')
-                                        <span class="badge badge-info">Pesanan Ditolak</span>
-                                    @elseif($m->status === '1')
-                                        <span class="badge badge-warning">Menunggu Konfirmasi</span>
-                                    @elseif($m->status === '2')
-                                        <span class="badge badge-success">Pesanan Diterima</span>
-                                    @elseif($m->status === '3')
-                                        <span class="badge badge-danger">Pesanan Siap</span>
-                                    @elseif($m->status === '4')
-                                        <span class="badge badge-primary">Pesanan Selesai(user)</span>
-                                    @elseif($m->status === '5')
-                                        <span class="badge badge-danger">Pesanan Selesai</span>
-                                    @elseif($m->status === '6')
-                                        <span class="badge badge-danger">Pesanan dibatalkan</span>
-                                    @endif
-                                </td>
-                                <td>{{$m->total}}</td>
-                                <td>{{$m->created_at}}</td>
-                                <td>{{$m->updated_at}}</td>
-                                <td>
-                                    @if($m->status === '1')
-                                        <form action="{{ url('/mitra/pesanan/edit-status') }}" method="POST" style="display: inline;">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $m->id }}">
-                                            <input type="hidden" name="status" value="2">
-                                            <button type="submit" class="btn btn-primary">Terima</button>
-                                        </form>
-                                        <form action="{{ url('/mitra/pesanan/edit-status') }}" method="POST" style="display: inline;">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $m->id }}">
-                                            <input type="hidden" name="status" value="0">
-                                            <button type="submit" class="btn btn-danger">Tolak</button>
-                                        </form>
-                                    @elseif($m->status === '2')
-                                        <form action="{{ url('/mitra/pesanan/edit-status') }}" method="POST" style="display: inline;">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $m->id }}">
-                                            <input type="hidden" name="status" value="3">
-                                            <button type="submit" class="btn btn-primary">Siap</button>
-                                        </form>
-                                    @elseif($m->status === '4')
-                                        <form action="{{ url('/mitra/pesanan/edit-status') }}" method="POST" style="display: inline;">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $m->id }}">
-                                            <input type="hidden" name="status" value="5">
-                                            <button type="submit" class="btn btn-primary">Selesai</button>
-                                        </form>
-                                    @endif
-                                </td>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>{{$m->username}}</td>
+                            <td>
+                                @foreach($transaksi as $item)
+                                @if($item->username === $m->username)
+                                {{$item->nama_produk}},<br>
+                                @endif
+                                @endforeach
+                            </td>
+                            <td>
+                                @if ($m->status === '0')
+                                <span class="badge badge-danger">Pesanan Ditolak</span>
+                                @elseif($m->status === '1')
+                                <span class="badge badge-warning">Menunggu Konfirmasi</span>
+                                @elseif($m->status === '2')
+                                <span class="badge badge-success">Pesanan Diterima</span>
+                                @elseif($m->status === '3')
+                                <span class="badge badge-info">Pesanan Siap</span>
+                                @elseif($m->status === '4')
+                                <span class="badge badge-success">Pesanan Selesai(user)</span>
+                                @elseif($m->status === '5')
+                                <span class="badge badge-danger">Pesanan Selesai</span>
+                                @elseif($m->status === '6')
+                                <span class="badge badge-danger">Pesanan dibatalkan</span>
+                                @endif
+                            </td>
+                            <td>{{$m->total}}</td>
+                            <td>{{$m->created_at}}</td>
+                            <td>{{$m->updated_at}}</td>
+                            <td>
+                                @if($m->status === '1')
+                                <form action="{{ url('/mitra/pesanan/edit-status') }}" method="POST"
+                                    style="display: inline;">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $m->id }}">
+                                    <input type="hidden" name="status" value="2">
+                                    <button type="submit" class="btn btn-primary">Terima</button>
+                                </form>
+                                <form action="{{ url('/mitra/pesanan/edit-status') }}" method="POST"
+                                    style="display: inline;">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $m->id }}">
+                                    <input type="hidden" name="status" value="0">
+                                    <button type="submit" class="btn btn-danger">Tolak</button>
+                                </form>
+                                @elseif($m->status === '2')
+                                <form action="{{ url('/mitra/pesanan/edit-status') }}" method="POST"
+                                    style="display: inline;">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $m->id }}">
+                                    <input type="hidden" name="status" value="3">
+                                    <button type="submit" class="btn btn-primary">Siap</button>
+                                </form>
+                                @elseif($m->status === '4')
+                                <form action="{{ url('/mitra/pesanan/edit-status') }}" method="POST"
+                                    style="display: inline;">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $m->id }}">
+                                    <input type="hidden" name="status" value="5">
+                                    <button type="submit" class="btn btn-primary">Selesai</button>
+                                </form>
+                                @endif
+                            </td>
+                            </td>
+                        </tr>
                         @endif
                         @endforeach
                         @else

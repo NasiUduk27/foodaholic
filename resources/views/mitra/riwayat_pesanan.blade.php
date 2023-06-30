@@ -96,12 +96,6 @@
                         @endif
                     </tbody>
                 </table>
-                <div class="d-flex justify-content-center">
-                    <a class="mt-3 ml-auto btn btn-success"
-                        href="{{ url('/mitra/riwayat-pesanan/'. auth()->user()->id. '/cetak') }}">
-                        Cetak Laporan
-                    </a>
-                </div>
             </div>
             <!-- /.card-body -->
             <!-- /.card-body -->
